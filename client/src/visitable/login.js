@@ -102,13 +102,9 @@ const Login = ({ loginOrRegister, setLoginOrRegister }) => {
           const token = response.data.token;
           localStorage.setItem("token", token);
           // localStorage.setItem('userData', JSON.stringify(userData));
-          localStorage.setItem('currentUser', JSON.stringify(response.data.user.username));
 
           setCurrentUser(response.data.user.username);
-          console.log("current at login: " + currentUser)
-
-          console.log("login in loginjs res data: " + response.data.user.username)
-
+          localStorage.setItem('currentUser', JSON.stringify(response.data.user.username));
           // Redirect the user to their profile page
 
           hooray();

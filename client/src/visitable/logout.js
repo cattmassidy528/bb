@@ -1,8 +1,8 @@
-// Logout.js
 
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AccountContext } from "./context";
+// import axios from "axios";
 
 function Logout() {
   const { setCurrentUser, setProfileData } = useContext(AccountContext)
@@ -10,15 +10,12 @@ function Logout() {
 
   const handleLogout = (e) => {
     e.preventDefault();
-    localStorage.removeItem("token");
-    localStorage.removeItem('userData');
     localStorage.removeItem('currentUser');
-    localStorage.setItem('currentUser', null)
-    localStorage.setItem('token', null)
+    localStorage.removeItem("token");
     setCurrentUser(null)
     setProfileData(null)
     navigate("/");
-  };
+  }
 
   return (
     <div className="d-flex justify-content-center mt-4">

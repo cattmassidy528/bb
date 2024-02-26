@@ -9,8 +9,7 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 const authRoutes = require("./routes/authRoutes");
-// const profileRoutes = require("./routes/profileRoutes");
-// const balanceRoutes = require("./routes/balanceRoutes");
+const mainRoutes = require("./routes/mainRoutes");
 
 mongoose
   .connect("mongodb://mongo:27017/bb-userdata", {
@@ -26,8 +25,9 @@ mongoose
 
 
 app.use("/api/auth", authRoutes);
-app.use("/api/auth/profile", authRoutes);
-app.use("/api/auth/profile/deposit/", authRoutes);
+app.use("/api/auth/profile", mainRoutes);
+// app.use("/api/auth/profile/deposit/", authRoutes);
+// app.use("/api/auth/", authRoutes)
 // app.use("/api/auth/balance", authRoutes);
 
 // app.use("/api/profile", profileRoutes);

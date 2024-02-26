@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const bcryptjs = require("bcryptjs");
 const secretKey = process.env.SECRET_KEY;
 const User = require("../models/userModel");
+const { generateToken } = require('../config/jwtUtils'); // Import your custom token generation function
 
 /////     /////     /////     /////     /////     /////     /////     /////     /////     /////     /////
 ///// REGISTER ////////// REGISTER ////////// REGISTER ////////// REGISTER ////////// REGISTER ////////// REGISTER /////
@@ -49,9 +50,8 @@ const authenticateUser = async (req, res, next) => {
     const isPasswordValid = await bcryptjs.compare(password, user.password);      // Verify password
 
     if (isPasswordValid) {
-      const token = jwt.sign({ userId: user._id }, secretKey, {        // Generate JWT token
-        expiresIn: "1h",         // Token expires in 1 hour
-      });
+      const token = generateToken({ userId: user._id }); // Generate JWT token using your custom function
+
       return res.status(200).json({ user, token });        // Send the JSON response with the token and user details
     } else {
       return res.status(401).json({ message: "Invalid username or password" });
@@ -65,25 +65,6 @@ const authenticateUser = async (req, res, next) => {
 
 };
 
-/////     /////     /////     /////     /////     /////     /////     /////     /////     /////
-///// PROTECTROUTE ////////// PROTECTROUTE ////////// PROTECTROUTE ////////// PROTECTROUTE ////////// PROTECTROUTE /////
-/////     /////     /////     /////     /////     /////     /////     /////     /////     /////
 
-
-// const protectRoute = (req, res, next) => {
-//   // Extract token from request header
-//   const token = req.headers.authorization;
-
-//   // Verify token
-//   jwt.verify(token, secretKey, (err, decodedToken) => {
-//     if (err) {
-//       return res.status(401).json({ message: 'Unauthorized' });
-//     } else {
-//       // Token is valid, proceed to the next middleware or route handler
-//       req.user = decodedToken;
-//       next();
-//     }
-//   });
-// };
 
 module.exports = { register, authenticateUser }

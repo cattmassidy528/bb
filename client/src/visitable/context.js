@@ -3,12 +3,12 @@ import axios from 'axios';
 export const AccountContext = createContext();
 
 const AccountContextProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
   const [userBal, setUserBal] = useState(0);
   const [pastBal, setPastBal] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
-  const [profileData, setProfileData] = useState(null)
+  const [profileData, setProfileData] = useState([])
   const [balance, setBalance] = useState(0); // Initialize balance to 0
   // const token = localStorage.getItem("token");
 
@@ -18,11 +18,12 @@ const AccountContextProvider = ({ children }) => {
         try {
           const token = localStorage.getItem('token');
           const response = await axios.get(`http://localhost:5000/api/auth/profile/${currentUser}`, {
-            headers: { Authorization: token }
+            headers: { Authorization: `Bearer ${token}` }
           });
-          // setProfileData(response.data)
-          console.log("contextjs response.data: " + response.data.user.balance);
-
+          console.log("contextjs response.data: " + response.data.user.username);
+          // console.log(response.data.user.username)
+          console.log(response.data.user.email)
+          console.log(response.data.user.balance)
         } catch (error) {
           console.error('Error fetching balance data (context - useEffect): ', error);
         }

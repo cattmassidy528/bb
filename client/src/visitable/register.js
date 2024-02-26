@@ -14,10 +14,11 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
     if (token) {
 
       localStorage.removeItem('token');
+      localStorage.removeItem('currentUser');
       console.log("token at register should be " + token)
     }
 
-  }, [token])
+  }, [token,])
 
   const [userData, setUserData] = useState({
     username: "",

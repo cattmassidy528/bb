@@ -7,17 +7,15 @@ import axios from 'axios';
 
 const Deposit = () => {
 
-    const { giveth, currentUser, setCurrentUser, setUserBal, profileData } = useContext(AccountContext)
+    const { giveth, currentUser, setCurrentUser, setUserBal, setProfileData, profileData } = useContext(AccountContext)
     const [depositAmount, setDepositAmount] = useState('')
     const [depositError, setDepositError] = useState(null)
 
     useEffect(() => {
         if (!currentUser) {
-            const localUser = JSON.parse(localStorage.getItem('currentUser'))
-            setCurrentUser(localUser)
+            setCurrentUser(JSON.parse(localStorage.getItem('currentUser')))
             console.log("currentUser in depositjs useEffect: " + currentUser)
         }
-        console.log("currentUser in depositjs useEffect: " + currentUser)
     }, [currentUser, setCurrentUser]);
 
 
@@ -52,12 +50,9 @@ const Deposit = () => {
                 const token = localStorage.getItem('token');
                 const response = await axios.post(`http://localhost:5000/api/auth/profile/${currentUser}/deposit`,
                     { currentUser, depositAmount }, {
-                    headers: { Authorization: token }
+                    headers: { Authorization: `Bearer ${token}` }
                 });
-                // setProfileData(response.data)
-                // console.log("profdata" + profileData.user)
-                setUserBal(response.data.user.balance); // Set profile data to the response data object
-
+                setProfileData(response.data)
             } catch (error) {
                 console.log("depositAmount in depositcall error: " + depositAmount)
                 console.error('Error making deposit (deposit.js - axios call): ', error);
@@ -83,7 +78,7 @@ const Deposit = () => {
                     <div className='container  d-flex justify-content-center'>
                         <form onSubmit={(e) => handleSubmit(e)}>
                             <h1 className='card-title d-flex justify-content-center mb-3'>Deposit</h1>
-                            <h4 className='ms-3'>User Balance: ${profileData}.00</h4>
+                            <h4 className='ms-3'>User Balance: ${profileData.balance}.00</h4>
                             {/* <h4 className='ms-3'>User Balance: ${profileData.user.balance}.00</h4> */}
 
                             <label className='m-2'>enter deposit amount below:</label>

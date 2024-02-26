@@ -7,7 +7,7 @@ const Profile = () => {
   const { userBal, setCurrentUser, currentUser, profileData, setProfileData } = useContext(AccountContext);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  // const params = useParams();
+  const params = useParams();
 
 
   // const userDataString = localStorage.getItem('currentUser');
@@ -16,14 +16,13 @@ const Profile = () => {
 
 
   useEffect(() => {
-    if (!currentUser) {
-      setCurrentUser(JSON.parse(localStorage.getItem('currentUser')))
-    }
     if (currentUser) {
       console.log("profilejs useEffect currentUser: " + currentUser)
     }
-
-  }, [currentUser, setCurrentUser]);
+    if (!currentUser) {
+      setCurrentUser(JSON.parse(localStorage.getItem('currentUser')))
+    }
+  }, [params.username, currentUser, setCurrentUser]);
 
   useEffect(() => {
     if (currentUser) {
@@ -31,11 +30,11 @@ const Profile = () => {
         try {
           const token = localStorage.getItem('token');
           const response = await axios.get(`http://localhost:5000/api/auth/profile/${currentUser}`, {
-            headers: { Authorization: token }
+            headers: { Authorization: `Bearer ${token}` }
           });
           setLoading(false); // Set loading to false after data is fetched
           setProfileData(response.data); // Set profile data to the response data object
-
+          console.log(localStorage.getItem('token'))
         } catch (error) {
           console.error('Error fetching profile data:', error);
           setError('An error occurred while fetching profile data. Please try again later.');
