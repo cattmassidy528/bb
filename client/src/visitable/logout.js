@@ -28,10 +28,7 @@ function Logout() {
               </h2>
               <div className="d-flex justify-content-center mt-3">
                 <button
-                  onClick={(e) => handleLogout(e)}
-                  className="btn btn-dark shadow-lg"
-                  autoFocus
-                >
+                  onClick={(e) => handleLogout(e)} className="btn btn-dark shadow-lg" autoFocus>
                   <b>Log out</b>
                 </button>
               </div>

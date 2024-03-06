@@ -4,20 +4,50 @@ import { AccountContext } from './context'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
 
 const Deposit = () => {
 
-    const { giveth, currentUser, setCurrentUser, setUserBal, setProfileData, profileData } = useContext(AccountContext)
+    const { giveth, currentUser, setCurrentUser, setProfileData, profileData } = useContext(AccountContext)
     const [depositAmount, setDepositAmount] = useState('')
     const [depositError, setDepositError] = useState(null)
-
+    const [usingTotal, setUsingTotal] = useState(true)
+    const [total, setTotal] = useState([])
+    const navigate = useNavigate();
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        if (!token) {
+            navigate('/')
+        }
+    })
     useEffect(() => {
         if (!currentUser) {
+
             setCurrentUser(JSON.parse(localStorage.getItem('currentUser')))
-            console.log("currentUser in depositjs useEffect: " + currentUser)
         }
     }, [currentUser, setCurrentUser]);
 
+    useEffect(() => {
+        console.log(currentUser)
+    })
+
+    useEffect(() => {
+        if (currentUser) {
+            const fetchProfileTotal = async () => {
+                try {
+                    const token = localStorage.getItem('token');
+                    const response = await axios.get(`http://localhost:5000/api/auth/profile/${currentUser}/total`, {
+                        headers: { Authorization: `Bearer ${token}` }
+                    });
+                    // setProfileData(response.data)
+                    setTotal(response.data.user.balance); // Set profile data to the response data object
+                } catch (error) {
+                    console.error('Error fetching profile data:', error);
+                }
+            };
+            fetchProfileTotal();
+        }
+    }, [currentUser, setProfileData, total]);
 
     const yup = () => toast.success("deposit successful! :)", {
         position: 'top-center',
@@ -53,6 +83,8 @@ const Deposit = () => {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setProfileData(response.data)
+                setUsingTotal(false)
+                // setTotal(response.data.user.balance)
             } catch (error) {
                 console.log("depositAmount in depositcall error: " + depositAmount)
                 console.error('Error making deposit (deposit.js - axios call): ', error);
@@ -60,9 +92,8 @@ const Deposit = () => {
             }
         };
         depositCall();
-
-
     }
+
     const handleInputChange = (e) => {
         setDepositAmount(e.target.value)
     }
@@ -78,8 +109,12 @@ const Deposit = () => {
                     <div className='container  d-flex justify-content-center'>
                         <form onSubmit={(e) => handleSubmit(e)}>
                             <h1 className='card-title d-flex justify-content-center mb-3'>Deposit</h1>
-                            <h4 className='ms-3'>User Balance: ${profileData.balance}.00</h4>
-                            {/* <h4 className='ms-3'>User Balance: ${profileData.user.balance}.00</h4> */}
+                            {usingTotal &&
+                                <h4 className='ms-3'>User Balance: ${total}.00</h4>
+                            }
+                            {usingTotal === false &&
+                                <h4 className='ms-3'>User Balance: ${profileData.balance}.00</h4>
+                            }
 
                             <label className='m-2'>enter deposit amount below:</label>
                             <input type='number' value={depositAmount} onChange={(e) => handleInputChange(e)} placeholder='$0.00...' className='form-control shadow-lg border border-2 border-secondary' autoFocus />

@@ -2,18 +2,21 @@ import React, { useEffect, useState, useContext } from "react";
 import { AccountContext } from "./context";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
-  const { userBal, setCurrentUser, currentUser, profileData, setProfileData } = useContext(AccountContext);
+  const { setCurrentUser, currentUser, profileData, setProfileData } = useContext(AccountContext);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const params = useParams();
+  const navigate = useNavigate();
 
-
-  // const userDataString = localStorage.getItem('currentUser');
-  // setCurrentUser(JSON.parse(userDataString))
-
-
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (!token) {
+      navigate('/')
+    }
+  })
 
   useEffect(() => {
     if (currentUser) {
@@ -53,6 +56,8 @@ const Profile = () => {
     return <div>Error: {error}</div>; // Render error state
   }
 
+
+
   return (
     <div className="d-flex justify-content-center mt-4">
       <div className="card mx-auto my-auto col-md-8 col-lg-6 col-sm-10 border border-3 border-dark shadow-lg">
@@ -60,22 +65,23 @@ const Profile = () => {
           <div className="card-body d-flex my-auto">
             <div className="container">
               <h1 className="card-title d-flex justify-content-center m-4">
-                username: {profileData.user.username}
+                welcome, {profileData.user.username}!
               </h1>
-              <div className="fs-3">
-                Here's your userBal: ${userBal}
-              </div>
               {profileData && (
                 <div className="fs-3">
+                  <div>
+                    profile balance: ${profileData.user.balance}.00
+
+                  </div>
                   <div>
 
                     email: {profileData.user.email}
                   </div>
                   <div>
-                    profile balanceeee: {profileData.user.balance}
-
+                    account id: {JSON.stringify(profileData.user._id).slice(15).replace('"', '')}
                   </div>
                 </div>
+
               )}
 
             </div>

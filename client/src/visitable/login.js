@@ -20,7 +20,6 @@ const Login = ({ loginOrRegister, setLoginOrRegister }) => {
     const token = localStorage.getItem("token");
     if (token) {
       console.log("already logged in");
-      console.log(token)
     }
 
     if (currentUser) {
@@ -29,8 +28,8 @@ const Login = ({ loginOrRegister, setLoginOrRegister }) => {
   }, [currentUser, navigate]);
 
   const arrayOfLoginWrongs = [
-    "username field empty or not in database",
-    "password must be at least eight characters or greater",
+    "username field empty or not in database or some other reason i can't remember.",
+    "password must be at least eight characters",
   ];
 
   const woops = (arrayOfLoginWrongs) =>
@@ -75,13 +74,13 @@ const Login = ({ loginOrRegister, setLoginOrRegister }) => {
       woops(arrayOfLoginWrongs[0]);
     }
 
-    if (userData.password.length < 0) {
+    if (userData.password.length <= 8) {
       setTf(false);
       woops(arrayOfLoginWrongs[1]);
       handleClearForm(e)
     }
 
-    if (userData.username.length >= 1 && userData.password.length > 0) {
+    if (userData.username.length >= 1 && userData.password.length > 8) {
       setTf(true);
       login(userData);
       setAllUsers((prevAllUsers) => {
@@ -101,11 +100,10 @@ const Login = ({ loginOrRegister, setLoginOrRegister }) => {
         if (response.data && response.data.token) {
           const token = response.data.token;
           localStorage.setItem("token", token);
-          // localStorage.setItem('userData', JSON.stringify(userData));
+          localStorage.setItem('userData', JSON.stringify(userData));
 
           setCurrentUser(response.data.user.username);
           localStorage.setItem('currentUser', JSON.stringify(response.data.user.username));
-          // Redirect the user to their profile page
 
           hooray();
           navigate(`/visitable/profile/${response.data.user.username}`);

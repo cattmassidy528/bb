@@ -101,7 +101,7 @@ const Navigation = () => {
             </ul>
           </div>
           <div className="d-flex flex-row-reverse ">
-            <span className="badge badge-primary text-primary">{currentUser}</span>
+            <span className="badge badge-primary text-primary fs-5">{currentUser}</span>
           </div>
         </div>
       </nav>

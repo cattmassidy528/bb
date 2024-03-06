@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getProfile, logout, deposit } = require("../controllers/mainController")
+const { getProfile, logout, deposit, total, withdraw } = require("../controllers/mainController")
 const authenticateMiddleware = require('../middleware/authenticateMiddleware');
 
 
@@ -13,9 +13,11 @@ router.post("/logout", logout);
 ///// PROFILEDATA.BALANCE??? ////////// PROFILEDATA.BALANCE??? /////
 
 router.get("/:username", getProfile);
+router.get("/:username/total", authenticateMiddleware, total);
 
 ///// DEPOSIT ////////// DEPOSIT ////////// DEPOSIT /////
 router.post("/:username/deposit", authenticateMiddleware, deposit);
+router.post("/:username/withdraw", authenticateMiddleware, withdraw);
 
 
 

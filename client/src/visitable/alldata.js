@@ -1,11 +1,19 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { AccountContext } from './context';
+import { useNavigate } from 'react-router-dom'
 
 const AllData = () => {
   const { allUsers, userBal, pastBal } = useContext(AccountContext);
 
   const [currentPastBal, setCurrentPastBal] = useState(pastBal);
 
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (!token) {
+      navigate('/')
+    }
+  })
 
   useEffect(() => {
     setCurrentPastBal(pastBal);

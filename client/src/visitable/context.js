@@ -10,7 +10,6 @@ const AccountContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [profileData, setProfileData] = useState([])
   const [balance, setBalance] = useState(0); // Initialize balance to 0
-  // const token = localStorage.getItem("token");
 
   useEffect(() => {
     if (currentUser) {
@@ -21,9 +20,8 @@ const AccountContextProvider = ({ children }) => {
             headers: { Authorization: `Bearer ${token}` }
           });
           console.log("contextjs response.data: " + response.data.user.username);
-          // console.log(response.data.user.username)
-          console.log(response.data.user.email)
-          console.log(response.data.user.balance)
+          setProfileData(response.data)
+
         } catch (error) {
           console.error('Error fetching balance data (context - useEffect): ', error);
         }

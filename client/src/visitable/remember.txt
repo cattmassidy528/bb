@@ -1,8 +1,0 @@
-
-
-const getJwtStuff =() => {
-    const currentUser = localStorage.getItem('currentUser');
-    return currentUser ? JSON.parse(currentUser) : null; 
-}
-
-

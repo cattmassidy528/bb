@@ -13,9 +13,7 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
   useEffect(() => {
     if (token) {
 
-      localStorage.removeItem('token');
-      localStorage.removeItem('currentUser');
-      console.log("token at register should be " + token)
+      console.log("token at register/login: " + token)
     }
 
   }, [token,])

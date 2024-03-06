@@ -15,7 +15,6 @@ import "react-tooltip/dist/react-tooltip.css";
 
 const App = () => {
   const username = JSON.parse(localStorage.getItem("currentUser"))
-  console.log(localStorage.getItem('token'))
 
   return (
     <div className="App">
