@@ -26,12 +26,13 @@ mongoose
 
 app.use("/api/auth", authRoutes);
 app.use("/api/auth/profile", mainRoutes);
-// app.use("/api/auth/profile/deposit/", authRoutes);
-// app.use("/api/auth/", authRoutes)
-// app.use("/api/auth/balance", authRoutes);
 
-// app.use("/api/profile", profileRoutes);
 
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 
 app.get("/", (req, res) => {
