@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.83d5d892.css",
+    "main.js": "/static/js/main.ccb02b1b.js",
+    "static/media/bank-clip.png": "/static/media/bank-clip.e401c451db4dd3a7705a.png",
+    "index.html": "/index.html",
+    "main.83d5d892.css.map": "/static/css/main.83d5d892.css.map",
+    "main.ccb02b1b.js.map": "/static/js/main.ccb02b1b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.83d5d892.css",
+    "static/js/main.ccb02b1b.js"
+  ]
+}
