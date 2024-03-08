@@ -16,7 +16,6 @@ const mainRoutes = require("./routes/mainRoutes");
 
 const uri = process.env.MONGODB_URI
 
-// .connect("mongodb://mongo:27017/bb-userdata", {
 mongoose
   .connect(uri, {
     useNewUrlParser: true,
