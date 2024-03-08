@@ -7,6 +7,6 @@ const userSchema = new mongoose.Schema({
   balance: { type: Number, default: 1000 },
 });
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema, "users");
 
 module.exports = User;
