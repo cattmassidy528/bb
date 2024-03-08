@@ -14,7 +14,7 @@ app.use(express.json());
 const authRoutes = require("./routes/authRoutes");
 const mainRoutes = require("./routes/mainRoutes");
 
-const uri = "mongodb+srv://<username>:<password>@bb-mongo-1.8fhaj7v.mongodb.net/?retryWrites=true&w=majority&appName=bb-mongo-1";
+const uri = "mongodb+srv://admin:123passwd321@bb-mongo-1.8fhaj7v.mongodb.net/?retryWrites=true&w=majority&appName=bb-mongo-1";
 
 // .connect("mongodb://mongo:27017/bb-userdata", {
 mongoose
