@@ -6,4 +6,4 @@ ENV MONGO_INITDB_ROOT_PASSWORD=123passwd321
 
 EXPOSE 27017
 
-CMD ["mongodb"]
+CMD ["mongod"]
