@@ -14,8 +14,9 @@ app.use(express.json());
 const authRoutes = require("./routes/authRoutes");
 const mainRoutes = require("./routes/mainRoutes");
 
+// .connect("mongodb://mongo:27017/bb-userdata", {
 mongoose
-  .connect("mongodb://mongo:27017/bb-userdata", {
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
