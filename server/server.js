@@ -4,6 +4,8 @@ const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 // const bcryptjs = require("bcryptjs");
+const path = require('path')
+
 app.use(cors());
 app.use(express.json());
 
