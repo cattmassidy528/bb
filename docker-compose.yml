@@ -42,6 +42,9 @@ services:
       - app-network
 
   mongo:
+    build:
+      context: ./mongo
+      dockerfile: Dockerfile
     image: mongo
     container_name: bb-mongo-1
     volumes:
