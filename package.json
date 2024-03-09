@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "engines": {
+    "npm": "10.2.4",
     "node": "20.11.0"
   },
   "scripts": {
