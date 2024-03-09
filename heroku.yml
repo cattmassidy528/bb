@@ -1,7 +1,9 @@
 build:
   docker:
-    web: Dockerfile
-web:
+    client: client/Dockerfile
+    server: server/Dockerfile
+
+client:
   commands:
     - npm install
     - npm run build
