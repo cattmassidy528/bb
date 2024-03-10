@@ -116,7 +116,7 @@ const Deposit = () => {
                                 <h4 className='ms-3'>User Balance: ${profileData.balance}.00</h4>
                             }
 
-                            <label className='m-2'>enter deposit amount below:</label>
+                            <label className='m-2 d-flex justify-content-center'>enter deposit amount below:</label>
                             <input type='number' value={depositAmount} onChange={(e) => handleInputChange(e)} placeholder='$0.00...' className='form-control shadow-lg border border-2 border-secondary' autoFocus />
 
                             <div className='d-flex justify-content-center mt-3'>

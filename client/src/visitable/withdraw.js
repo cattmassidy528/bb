@@ -121,7 +121,7 @@ const Withdraw = () => {
                             {usingTotal === false &&
                                 <h4 className='ms-3'>User Balance: ${profileData.balance}.00</h4>
                             }
-                            <label className='m-2'>enter withdrawal amount below:</label>
+                            <label className='m-2 d-flex justify-content-center'>enter withdrawal amount below:</label>
                             <input type='number' value={withdrawAmount} onChange={(e) => handleInputChange(e)} placeholder='$0.00...' className='form-control shadow-lg border border-2 border-secondary' autoFocus />
 
                             <div className='d-flex justify-content-center mt-3'>
