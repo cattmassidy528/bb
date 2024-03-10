@@ -51,7 +51,7 @@ const Navigation = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div className={`collapse navbar-collapse + ${show}`} id="navbarNav">
+          <div className={"collapse navbar-collapse" + show} id="navbarNav">
             <ul className="nav navbar-nav">
               <li className={`nav-item ${isActive("/visitable/profile/:username")}`}>
                 <Link
