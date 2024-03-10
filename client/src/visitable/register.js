@@ -122,14 +122,9 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
   };
 
   return (
-    <div className="d-flex justify-content-center ">
-      <div className="d-flex justify-content-center fs-5">
-        new customers sign up below
-      </div>
-      <div
-        className="card mx-auto my-auto col-md-12 col-lg-12 col-sm-12"
-        style={{ border: "none" }}
-      >
+    <div className="d-flex justify-content-center align-items-center">
+      <div className="card mx-auto my-auto col-md-12 col-lg-12 col-sm-12" style={{ border: "none" }}>
+        <div className="d-flex justify-content-center fs-5">new customers sign up below</div>
         <div className="row d-flex my-auto">
           <div className="card-body d-flex my-auto">
             <div className="container ">
