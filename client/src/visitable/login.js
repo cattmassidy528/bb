@@ -163,7 +163,7 @@ const Login = ({ loginOrRegister, setLoginOrRegister }) => {
                   </div>
                 </div>
                 <div className="d-flex justify-content-center">
-                  <button className="btn btn-dark m-1 shadow-lg" type="submit">
+                  <button className="btn btn-outline-warning btn-success btn-lg shadow-lg" type="submit">
                     <b>Log In</b>
                   </button>
                 </div>

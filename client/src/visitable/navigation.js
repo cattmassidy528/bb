@@ -97,9 +97,9 @@ const Navigation = () => {
               </li>
             </ul>
           </div>
-          <div className="d-flex flex-row-reverse ">
-            <span className="badge badge-primary text-primary fs-5">{currentUser}</span>
-          </div>
+        </div>
+        <div className="d-flex flex-row-reverse ">
+          <span className="badge badge-primary text-primary" style={{ fontSize: 18 }}>{currentUser}</span>
         </div>
       </nav>
 

@@ -67,21 +67,20 @@ const Profile = () => {
               <h1 className="card-title d-flex justify-content-center m-4">
                 welcome, {profileData.user.username}!
               </h1>
+
+
               {profileData && (
                 <div className="fs-3">
                   <div>
-                    profile balance: <span className="fs-2">${profileData.user.balance}.00 </span>
-
+                    profile balance: ${profileData.user.balance}.00
                   </div>
                   <div>
-
                     email: {profileData.user.email}
                   </div>
                   <div>
-                    account id: {JSON.stringify(profileData.user._id).slice(15).replace('"', '')}
+                    account id: {JSON.stringify(profileData.user._id).slice(12).replace('"', '')}
                   </div>
                 </div>
-
               )}
 
             </div>
