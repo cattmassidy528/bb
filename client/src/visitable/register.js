@@ -79,7 +79,7 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
       setTf(false);
       woops(arrayOfRegisterWrongs[1]);
     }
-    if (userData.password.length < 0) {
+    if (userData.password.length < 8) {
       setTf(false);
       woops(arrayOfRegisterWrongs[2]);
     }
@@ -87,7 +87,7 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
     if (
       userData.username.length >= 1 &&
       userData.email.length >= 1 &&
-      userData.password.length > 0
+      userData.password.length > 8
     ) {
       setTf(true);
       login(userData);
