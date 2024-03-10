@@ -5,7 +5,6 @@ import "react-tooltip/dist/react-tooltip.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { AccountContext } from "./context";
-// import { useParams } from "react-router-dom";
 
 const Navigation = () => {
   const { currentUser } = useContext(AccountContext)
