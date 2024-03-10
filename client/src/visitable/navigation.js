@@ -85,7 +85,7 @@ const Navigation = () => {
                   data-tooltip-id={"alldatatool"}
                   to="/visitable/alldata"
                 >
-                  All Data
+                  Data
                 </Link>
               </li>
               <li className={`nav-item ${isActive("/visitable/logout")}`}>
