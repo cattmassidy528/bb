@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
@@ -8,14 +8,8 @@ import { AccountContext } from "./context";
 // import { useParams } from "react-router-dom";
 
 const Navigation = () => {
-  const [hamburgerShown, setHamburgerShown] = useState({ showCollapsedMenu: false })
-  const hamburger = () => {
-    setHamburgerShown({ showCollapsedMenu: true })
-  }
-  const show = hamburgerShown ? "show" : "";
   const { currentUser } = useContext(AccountContext)
   const location = useLocation();
-  // const { username } = useParams();
 
   const isActive = (path) => {
     const formattedPath = `/visitable/profile/${currentUser}`;
@@ -46,12 +40,11 @@ const Navigation = () => {
             aria-haspopup="true"
             aria-expanded="false"
             aria-label="Toggle navigation"
-            onClick={hamburger()}
           >
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div className={"collapse navbar-collapse" + show} id="navbarNav">
+          <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="nav navbar-nav">
               <li className={`nav-item ${isActive("/visitable/profile/:username")}`}>
                 <Link
