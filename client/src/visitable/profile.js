@@ -70,7 +70,7 @@ const Profile = () => {
               {profileData && (
                 <div className="fs-3">
                   <div>
-                    profile balance: ${profileData.user.balance}.00
+                    profile balance: <span className="fs-2">${profileData.user.balance}.00 </span>
 
                   </div>
                   <div>
