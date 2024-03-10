@@ -122,7 +122,7 @@ const Login = ({ loginOrRegister, setLoginOrRegister }) => {
 
   return (
     <div className="d-flex justify-content-center ">
-      <div className="card mx-auto my-auto col-md-12 col-lg-12 col-sm-12" style={{ border: "none" }} s>
+      <div className="card mx-auto my-auto col-md-12 col-lg-12 col-sm-12" style={{ border: "none" }}>
         <div className="d-flex justify-content-center fs-5">returning customers sign in below</div>
         <div className="row d-flex my-auto">
           <div className="card-body d-flex my-auto">
