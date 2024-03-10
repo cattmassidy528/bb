@@ -27,9 +27,6 @@ const Home = () => {
               <h4>for all your !banking needs</h4>
             </div>
 
-            <div className="d-flex justify-content-center fs-5">
-              new users register below
-            </div>
             {loginOrRegister && (
               <SignUp
                 loginOrRegister={loginOrRegister}
