@@ -26,7 +26,6 @@ const Home = () => {
             <div className="card-body d-flex justify-content-center">
               <h4>for all your !banking needs</h4>
             </div>
-
             {loginOrRegister && (
               <SignUp
                 loginOrRegister={loginOrRegister}

@@ -156,7 +156,7 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
                 )}
                 {tf === false && (
                   <div className="d-flex justify-content-center">
-                    <button className="btn btn-dark m-1 shadow-lg" type="submit">
+                    <button className="btn btn-outline-warning btn-success btn-lg shadow-lg" type="submit">
                       <b>Sign Up</b>
                     </button>
                   </div>
@@ -178,12 +178,12 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
                     </span>
                   </div>
                   <div className="d-flex justify-content-center">
-                    <button type="submit" className="btn btn-dark shadow-lg m-2" onClick={(e) => handleChangeToLogin(e)} autoFocus>
+                    <button type="submit" className="btn btn-outline-warning btn-success btn-lg shadow-lg m-2" onClick={(e) => handleChangeToLogin(e)} autoFocus>
                       <b>Take me to Login</b>
                     </button>
                   </div>
                   <div className="d-flex justify-content-center">
-                    <button className="btn btn-dark shadow-lg m-2 mb-3" onClick={(e) => handleClearFormSubmit(e)}>
+                    <button className="btn btn-outline-warning btn-success btn-lg shadow-lg m-2 mb-4" onClick={(e) => handleClearFormSubmit(e)}>
                       <b>Create Another Account</b>
                     </button>
                   </div>
