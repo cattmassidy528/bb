@@ -101,10 +101,8 @@ const Login = ({ loginOrRegister, setLoginOrRegister }) => {
           const token = response.data.token;
           localStorage.setItem("token", token);
           localStorage.setItem('userData', JSON.stringify(userData));
-
           setCurrentUser(response.data.user.username);
           localStorage.setItem('currentUser', JSON.stringify(response.data.user.username));
-
           hooray();
           navigate(`/visitable/profile/${response.data.user.username}`);
         }
