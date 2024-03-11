@@ -84,7 +84,6 @@ const Deposit = () => {
                 });
                 setProfileData(response.data)
                 setUsingTotal(false)
-                // setTotal(response.data.user.balance)
             } catch (error) {
                 console.log("depositAmount in depositcall error: " + depositAmount)
                 console.error('Error making deposit (deposit.js - axios call): ', error);
