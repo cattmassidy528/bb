@@ -101,10 +101,8 @@ const Login = ({ loginOrRegister, setLoginOrRegister }) => {
           const token = response.data.token;
           localStorage.setItem("token", token);
           localStorage.setItem('userData', JSON.stringify(userData));
-
           setCurrentUser(response.data.user.username);
           localStorage.setItem('currentUser', JSON.stringify(response.data.user.username));
-
           hooray();
           navigate(`/visitable/profile/${response.data.user.username}`);
         }
@@ -121,11 +119,9 @@ const Login = ({ loginOrRegister, setLoginOrRegister }) => {
   };
 
   return (
-    <div className="d-flex justify-content-center ">
-      <div
-        className="card mx-auto my-auto col-md-12 col-lg-12 col-sm-12"
-        style={{ border: "none" }}
-      >
+    <div className="d-flex justify-content-center p-2">
+      <div className="card mx-auto my-auto col-md-12 col-lg-12 col-sm-12" style={{ border: "none" }}>
+        <div className="d-flex justify-content-center fs-5">returning customers sign in below</div>
         <div className="row d-flex my-auto">
           <div className="card-body d-flex my-auto">
             <div className="container ">
@@ -165,7 +161,7 @@ const Login = ({ loginOrRegister, setLoginOrRegister }) => {
                   </div>
                 </div>
                 <div className="d-flex justify-content-center">
-                  <button className="btn btn-dark m-1 shadow-lg" type="submit">
+                  <button className="btn btn-outline-warning btn-success btn-lg shadow-lg" type="submit">
                     <b>Log In</b>
                   </button>
                 </div>

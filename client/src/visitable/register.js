@@ -79,7 +79,7 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
       setTf(false);
       woops(arrayOfRegisterWrongs[1]);
     }
-    if (userData.password.length < 0) {
+    if (userData.password.length < 8) {
       setTf(false);
       woops(arrayOfRegisterWrongs[2]);
     }
@@ -87,7 +87,7 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
     if (
       userData.username.length >= 1 &&
       userData.email.length >= 1 &&
-      userData.password.length > 0
+      userData.password.length > 8
     ) {
       setTf(true);
       login(userData);
@@ -122,11 +122,9 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
   };
 
   return (
-    <div className="d-flex justify-content-center ">
-      <div
-        className="card mx-auto my-auto col-md-12 col-lg-12 col-sm-12"
-        style={{ border: "none" }}
-      >
+    <div className="d-flex justify-content-center pt-1">
+      <div className="card mx-auto my-auto col-md-12 col-lg-12 col-sm-12" style={{ border: "none" }}>
+        <div className="d-flex justify-content-center fs-5">new customers sign up below</div>
         <div className="row d-flex my-auto">
           <div className="card-body d-flex my-auto">
             <div className="container ">
@@ -158,7 +156,7 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
                 )}
                 {tf === false && (
                   <div className="d-flex justify-content-center">
-                    <button className="btn btn-dark m-1 shadow-lg" type="submit">
+                    <button className="btn btn-outline-warning btn-success btn-lg shadow-lg" type="submit">
                       <b>Sign Up</b>
                     </button>
                   </div>
@@ -180,12 +178,12 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
                     </span>
                   </div>
                   <div className="d-flex justify-content-center">
-                    <button type="submit" className="btn btn-dark shadow-lg m-2" onClick={(e) => handleChangeToLogin(e)} autoFocus>
+                    <button type="submit" className="btn btn-outline-warning btn-success btn-lg shadow-lg m-2" onClick={(e) => handleChangeToLogin(e)} autoFocus>
                       <b>Take me to Login</b>
                     </button>
                   </div>
                   <div className="d-flex justify-content-center">
-                    <button className="btn btn-dark shadow-lg m-2 mb-3" onClick={(e) => handleClearFormSubmit(e)}>
+                    <button className="btn btn-outline-warning btn-success btn-lg shadow-lg m-2 mb-4" onClick={(e) => handleClearFormSubmit(e)}>
                       <b>Create Another Account</b>
                     </button>
                   </div>
