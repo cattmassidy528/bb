@@ -1,5 +1,6 @@
 build:
   docker:
+    web: Dockerfile
     client: client/Dockerfile
     server: server/Dockerfile
 
@@ -13,3 +14,8 @@ server:
   commands:
     - npm install
     - node server/server.js
+
+run:
+  web: mongod --fork --logpath /var/log/mongodb.log && node server/server.js
+  client: npm start --prefix client
+  server: node server/server.js
