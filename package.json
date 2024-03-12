@@ -10,8 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "webpack serve",
     "client-install": "cd client && npm install",
-    "client-start": "cd client && npm start",
-    "server-start": "node server/server.js",
+    "client": "cd client && npm start",
+    "server": "cd server && node your-server-entry-file.js",
     "start": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
