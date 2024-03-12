@@ -5,10 +5,13 @@ import "react-tooltip/dist/react-tooltip.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { AccountContext } from "./context";
+// import { useParams } from "react-router-dom";
 
 const Navigation = () => {
+
   const { currentUser } = useContext(AccountContext)
   const location = useLocation();
+  // const { username } = useParams();
 
   const isActive = (path) => {
     const formattedPath = `/visitable/profile/${currentUser}`;
@@ -82,7 +85,7 @@ const Navigation = () => {
                   data-tooltip-id={"alldatatool"}
                   to="/visitable/alldata"
                 >
-                  Data
+                  All Data
                 </Link>
               </li>
               <li className={`nav-item ${isActive("/visitable/logout")}`}>
@@ -97,9 +100,9 @@ const Navigation = () => {
               </li>
             </ul>
           </div>
-        </div>
-        <div className="d-flex flex-row-reverse ">
-          <span className="badge badge-primary text-primary" style={{ fontSize: 18 }}>{currentUser}</span>
+          <div className="d-flex flex-row-reverse ">
+            <span className="badge badge-primary text-primary fs-5">{currentUser}</span>
+          </div>
         </div>
       </nav>
 
