@@ -10,9 +10,9 @@ const authenticateMiddleware = require('../middleware/authenticateMiddleware');
 router.post("/logout", logout);
 
 ///// GETPROFILE ////////// GETPROFILE ////////// GETPROFILE /////
-///// PROFILEDATA.BALANCE??? ////////// PROFILEDATA.BALANCE??? /////
 
 router.get("/:username", getProfile);
+
 router.get("/:username/total", authenticateMiddleware, total);
 
 ///// DEPOSIT ////////// DEPOSIT ////////// DEPOSIT /////

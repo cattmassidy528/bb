@@ -84,7 +84,6 @@ const Deposit = () => {
                 });
                 setProfileData(response.data)
                 setUsingTotal(false)
-                // setTotal(response.data.user.balance)
             } catch (error) {
                 console.log("depositAmount in depositcall error: " + depositAmount)
                 console.error('Error making deposit (deposit.js - axios call): ', error);
@@ -108,19 +107,20 @@ const Deposit = () => {
                 <div className='card-body'>
                     <div className='container  d-flex justify-content-center'>
                         <form onSubmit={(e) => handleSubmit(e)}>
-                            <h1 className='card-title d-flex justify-content-center mb-3'>Deposit</h1>
+                            <h1 className='card-title d-flex justify-content-center m-3 mb-3'>Deposit</h1>
+
                             {usingTotal &&
-                                <h4 className='ms-3'>User Balance: ${total}.00</h4>
+                                <h4 className='m-3 d-flex justify-content-center'>User Balance: ${total}.00</h4>
                             }
                             {usingTotal === false &&
-                                <h4 className='ms-3'>User Balance: ${profileData.balance}.00</h4>
+                                <h4 className='m-3 d-flex justify-content-center'>User Balance: ${profileData.balance}.00</h4>
                             }
 
-                            <label className='m-2'>enter deposit amount below:</label>
+                            <label className='m-2 d-flex justify-content-center'>enter deposit amount below:</label>
                             <input type='number' value={depositAmount} onChange={(e) => handleInputChange(e)} placeholder='$0.00...' className='form-control shadow-lg border border-2 border-secondary' autoFocus />
 
                             <div className='d-flex justify-content-center mt-3'>
-                                <button className='btn btn-dark shadow-lg' type='submit'><b>submit</b></button>
+                                <button className='btn btn-outline-warning btn-success btn-lg shadow-lg' type='submit'><b>submit</b></button>
                             </div>
                         </form>
                     </div>

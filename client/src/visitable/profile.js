@@ -57,7 +57,6 @@ const Profile = () => {
   }
 
 
-
   return (
     <div className="d-flex justify-content-center mt-4">
       <div className="card mx-auto my-auto col-md-8 col-lg-6 col-sm-10 border border-3 border-dark shadow-lg">
@@ -67,21 +66,23 @@ const Profile = () => {
               <h1 className="card-title d-flex justify-content-center m-4">
                 welcome, {profileData.user.username}!
               </h1>
+              <div className='d-flex justify-content-center'><ul style={{ display: 'inline-block' }}><li ></li></ul><ul style={{ display: 'inline-block' }}><li></li></ul><ul style={{ display: 'inline-block' }}><li></li></ul></div>
+
               {profileData && (
-                <div className="fs-3">
-                  <div>
-                    profile balance: ${profileData.user.balance}.00
+                <div className="p-3">
+                  <div className="fs-4">
+                    profile balance:<b className="ps-1"> ${profileData.user.balance}.00 </b>
+                  </div>
 
+                  <div className="fs-4">
+                    email: <b className="ps-1">{profileData.user.email}</b>
                   </div>
-                  <div>
 
-                    email: {profileData.user.email}
+                  <div className="fs-4">
+                    account id: <b className="ps-1">{JSON.stringify(profileData.user._id).slice(12).replace('"', '')} </b>
                   </div>
-                  <div>
-                    account id: {JSON.stringify(profileData.user._id).slice(15).replace('"', '')}
-                  </div>
+
                 </div>
-
               )}
 
             </div>

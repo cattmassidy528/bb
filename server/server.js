@@ -36,7 +36,6 @@ app.get("/", (req, res) => {
   res.send({ message: "hello from express nightmare." });
 });
 
-
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('*', (req, res) => {
