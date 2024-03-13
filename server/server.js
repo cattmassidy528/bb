@@ -5,7 +5,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 // const bcryptjs = require("bcryptjs");
 const path = require('path')
-const port = process.env.PORT || 80;
+const PORT = process.env.PORT || 80;
 
 app.use(cors());
 app.use(express.json());
@@ -42,6 +42,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on PORT ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on PORT ${PORT}`);
 });
