@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Deposit = () => {
 
-    const { giveth, currentUser, setCurrentUser, setProfileData, profileData, base } = useContext(AccountContext)
+    const { giveth, currentUser, setCurrentUser, setProfileData, profileData } = useContext(AccountContext)
     const [depositAmount, setDepositAmount] = useState('')
     const [depositError, setDepositError] = useState(null)
     const [usingTotal, setUsingTotal] = useState(true)
@@ -37,7 +37,7 @@ const Deposit = () => {
             const fetchProfileTotal = async () => {
                 try {
                     const token = localStorage.getItem('token');
-                    const response = await axios.get(`${base}/api/auth/profile/${currentUser}/total`, {
+                    const response = await axios.get(`/api/auth/profile/${currentUser}/total`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     // setProfileData(response.data)
@@ -48,7 +48,7 @@ const Deposit = () => {
             };
             fetchProfileTotal();
         }
-    }, [currentUser, setProfileData, total, base]);
+    }, [currentUser, setProfileData, total]);
 
     const yup = () => toast.success("deposit successful! :)", {
         position: 'top-center',
@@ -79,7 +79,7 @@ const Deposit = () => {
         const depositCall = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.post(`http://localhost:5000/api/auth/profile/${currentUser}/deposit`,
+                const response = await axios.post(`/api/auth/profile/${currentUser}/deposit`,
                     { currentUser, depositAmount }, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
