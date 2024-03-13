@@ -3,7 +3,7 @@ services:
   server:
     build:
       context: ./server
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.server
     image: bb-server-img
     container_name: bb-server-container
     command: /usr/src/app/node_modules/.bin/nodemon server.js
@@ -24,7 +24,7 @@ services:
   client:
     build:
       context: ./client
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.client
     image: bb-client-img
     container_name: bb-client-container
     command: npm start
@@ -38,19 +38,6 @@ services:
     stdin_open: true
     tty: true
     restart: always
-    networks:
-      - app-network
-
-  mongo:
-    build:
-      context: ./mongo
-      dockerfile: Dockerfile
-    image: mongo
-    container_name: bb-mongo-1
-    volumes:
-      - data-volume:/data/db
-    ports:
-      - "27017:27017"
     networks:
       - app-network
 
