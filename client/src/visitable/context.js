@@ -10,14 +10,13 @@ const AccountContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [profileData, setProfileData] = useState([])
   const [balance, setBalance] = useState(0); // Initialize balance to 0
-  const base = "https://bad-bank-matthew-cassidy-709735df14a5.herokuapp.com"
 
   useEffect(() => {
     if (currentUser) {
       const fetchProfile = async () => {
         try {
           const token = localStorage.getItem('token');
-          const response = await axios.get(`${base}/api/auth/profile/${currentUser}`, {
+          const response = await axios.get(`/api/auth/profile/${currentUser}`, {
             headers: { Authorization: `Bearer ${token}` }
           });
           console.log("contextjs response.data: " + response.data.user.username);
@@ -78,7 +77,6 @@ const AccountContextProvider = ({ children }) => {
     setAllUsers,
     allUsers,
     login,
-    base,
   };
 
   return (

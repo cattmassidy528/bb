@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
   const [tf, setTf] = useState(false);
-  const { login, setAllUsers, base } = useContext(AccountContext);
+  const { login, setAllUsers } = useContext(AccountContext);
   const token = localStorage.getItem('token');
 
   useEffect(() => {
@@ -97,7 +97,7 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
 
       try {
         const response = await axios.post(
-          `${base}/api/auth/register`,
+          '/api/auth/register',
           userData,
           {
             headers: {

@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const Login = ({ loginOrRegister, setLoginOrRegister }) => {
   const [tf, setTf] = useState(false);
-  const { login, setAllUsers, setCurrentUser, currentUser, base } = useContext(AccountContext);
+  const { login, setAllUsers, setCurrentUser, currentUser } = useContext(AccountContext);
   const navigate = useNavigate();
 
   const [userData, setUserData] = useState({
@@ -89,7 +89,7 @@ const Login = ({ loginOrRegister, setLoginOrRegister }) => {
 
       try {
         const response = await axios.post(
-          `${base}/api/auth/login`,
+          '/api/auth/login',
           userData,
           {
             headers: {
