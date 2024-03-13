@@ -8,12 +8,13 @@ import { useNavigate } from 'react-router-dom'
 
 const Deposit = () => {
 
-    const { giveth, currentUser, setCurrentUser, setProfileData, profileData } = useContext(AccountContext)
+    const { giveth, currentUser, setCurrentUser, setProfileData, profileData, base } = useContext(AccountContext)
     const [depositAmount, setDepositAmount] = useState('')
     const [depositError, setDepositError] = useState(null)
     const [usingTotal, setUsingTotal] = useState(true)
     const [total, setTotal] = useState([])
     const navigate = useNavigate();
+
     useEffect(() => {
         const token = localStorage.getItem('token')
         if (!token) {
@@ -36,7 +37,7 @@ const Deposit = () => {
             const fetchProfileTotal = async () => {
                 try {
                     const token = localStorage.getItem('token');
-                    const response = await axios.get(`http://localhost:5000/api/auth/profile/${currentUser}/total`, {
+                    const response = await axios.get(`${base}/api/auth/profile/${currentUser}/total`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     // setProfileData(response.data)
@@ -47,7 +48,7 @@ const Deposit = () => {
             };
             fetchProfileTotal();
         }
-    }, [currentUser, setProfileData, total]);
+    }, [currentUser, setProfileData, total, base]);
 
     const yup = () => toast.success("deposit successful! :)", {
         position: 'top-center',

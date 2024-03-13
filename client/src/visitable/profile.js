@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
-  const { setCurrentUser, currentUser, profileData, setProfileData } = useContext(AccountContext);
+  const { setCurrentUser, currentUser, profileData, setProfileData, base } = useContext(AccountContext);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const params = useParams();
@@ -32,7 +32,7 @@ const Profile = () => {
       const fetchProfile = async () => {
         try {
           const token = localStorage.getItem('token');
-          const response = await axios.get(`http://localhost:5000/api/auth/profile/${currentUser}`, {
+          const response = await axios.get(`${base}/api/auth/profile/${currentUser}`, {
             headers: { Authorization: `Bearer ${token}` }
           });
           setLoading(false); // Set loading to false after data is fetched
@@ -46,7 +46,7 @@ const Profile = () => {
       };
       fetchProfile();
     }
-  }, [currentUser, setProfileData]);
+  }, [currentUser, setProfileData, base]);
 
   if (loading) {
     return <div>Loading...</div>; // Render loading state
