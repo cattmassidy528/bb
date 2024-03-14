@@ -1,15 +1,14 @@
 build:
   docker:
-    client: ./client/Dockerfile.client
+    web: ./client/Dockerfile.client
     server: ./server/Dockerfile.server
 
-client:
-  commands:
-    - npm install
-    - npm run build
-    - npm start
-
-server:
-  commands:
-    - npm install
-    - node server/server.js
+run:
+  - command: npm install
+    type: client
+  - command: npm run build
+    type: client
+  - command: npm install
+    type: server
+  - command: node server/server.js
+    type: server
