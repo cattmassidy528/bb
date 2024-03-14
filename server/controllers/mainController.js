@@ -5,8 +5,6 @@ const bcryptjs = require("bcryptjs");
 const secretKey = process.env.SECRET_KEY;
 const User = require("../models/userModel");
 
-///// GETPROFILE ////////// GETPROFILE ////////// GETPROFILE ////////// GETPROFILE ////////// GETPROFILE /////
-
 const getProfile = async (req, res) => {
   try {
     const username = req.params.username;
@@ -36,7 +34,6 @@ const total = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 };
-/////  DEPOSIT //////////  DEPOSIT //////////  DEPOSIT //////////  DEPOSIT //////////  DEPOSIT /////////  DEPOSIT /////
 
 const deposit = async (req, res) => {
   const username = req.params.username;
@@ -76,8 +73,6 @@ const withdraw = async (req, res) => {
     return res.status(500).json({ error: 'Internal server error' });
   }
 };
-
-///// LOGOUT ////////// LOGOUT ////////// LOGOUT ////////// LOGOUT ////////// LOGOUT ////////// LOGOUT //////////
 
 const logout = async (req, res) => {
   try {
