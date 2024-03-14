@@ -4,7 +4,7 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile.server
-    image: registry.heroku.com/bad-bank-matthew-cassidy/bb-server-img
+    image: registry.heroku.com/bad-bank-matthew-cassidy/bb-server-img:latest
     container_name: bb-server-container
     command: /usr/src/app/node_modules/.bin/nodemon server.js
     ports:
@@ -20,7 +20,7 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile.client
-    image: registry.heroku.com/bad-bank-matthew-cassidy/bb-client-img
+    image: registry.heroku.com/bad-bank-matthew-cassidy/bb-client-img:latest
     container_name: bb-client-container
     command: npm start
     depends_on:
