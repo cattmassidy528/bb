@@ -21,16 +21,13 @@ const Deposit = () => {
             navigate('/')
         }
     })
+
     useEffect(() => {
         if (!currentUser) {
-
             setCurrentUser(JSON.parse(localStorage.getItem('currentUser')))
         }
     }, [currentUser, setCurrentUser]);
 
-    useEffect(() => {
-        console.log(currentUser)
-    })
 
     useEffect(() => {
         if (currentUser) {
@@ -40,8 +37,7 @@ const Deposit = () => {
                     const response = await axios.get(`/api/auth/profile/${currentUser}/total`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
-                    // setProfileData(response.data)
-                    setTotal(response.data.user.balance); // Set profile data to the response data object
+                    setTotal(response.data.user.balance);
                 } catch (error) {
                     console.error('Error fetching profile data:', error);
                 }
@@ -86,8 +82,6 @@ const Deposit = () => {
                 setProfileData(response.data)
                 setUsingTotal(false)
             } catch (error) {
-                console.log("depositAmount in depositcall error: " + depositAmount)
-                console.error('Error making deposit (deposit.js - axios call): ', error);
                 setDepositError('An error occurred while making deposit. get rekt lmao.');
             }
         };

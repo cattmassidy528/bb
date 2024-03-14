@@ -66,7 +66,6 @@ const AccountContextProvider = ({ children }) => {
     balance,
     profileData,
     setProfileData,
-    // registerUser,
     currentUser,
     setCurrentUser,
     userBal,

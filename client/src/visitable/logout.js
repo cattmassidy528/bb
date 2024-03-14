@@ -2,7 +2,6 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AccountContext } from "./context";
-// import axios from "axios";
 
 function Logout() {
   const { setCurrentUser, setProfileData } = useContext(AccountContext)

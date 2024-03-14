@@ -100,7 +100,7 @@ const Login = ({ loginOrRegister, setLoginOrRegister }) => {
         if (response.data && response.data.token) {
           const token = response.data.token;
           localStorage.setItem("token", token);
-          localStorage.setItem('userData', JSON.stringify(userData));
+          // localStorage.setItem('userData', JSON.stringify(userData));
           setCurrentUser(response.data.user.username);
           localStorage.setItem('currentUser', JSON.stringify(response.data.user.username));
           hooray();

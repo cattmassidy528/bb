@@ -35,9 +35,7 @@ mongoose
 app.use("/api/auth", authRoutes);
 app.use("/api/auth/profile", mainRoutes);
 
-app.get("/", (req, res) => {
-  res.send({ message: "hello from express nightmare." });
-});
+
 
 // app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 app.use((err, req, res, next) => {
