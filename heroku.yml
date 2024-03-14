@@ -1,6 +1,6 @@
 build:
   docker:
-    web: ./client/Dockerfile.client
+    client: ./client/Dockerfile.client
     server: ./server/Dockerfile.server
 
 client:
