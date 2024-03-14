@@ -2,13 +2,3 @@ build:
   docker:
     web: ./client/Dockerfile.client
     server: ./server/Dockerfile.server
-
-run:
-  - type: client
-    command: ["npm", "install"]
-  - type: client
-    command: ["npm", "run", "build"]
-  - type: server
-    command: ["npm", "install"]
-  - type: server
-    command: ["node", "server/server.js"]
