@@ -4,11 +4,11 @@ build:
     server: ./server/Dockerfile.server
 
 run:
-  - command: npm install
-    type: client
-  - command: npm run build
-    type: client
-  - command: npm install
-    type: server
-  - command: node server/server.js
-    type: server
+  - type: client
+    command: npm install
+  - type: client
+    command: npm run build
+  - type: server
+    command: npm install
+  - type: server
+    command: node server/server.js
