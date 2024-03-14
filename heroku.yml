@@ -5,10 +5,10 @@ build:
 
 run:
   - type: client
-    command: npm install
+    command: ["npm", "install"]
   - type: client
-    command: npm run build
+    command: ["npm", "run", "build"]
   - type: server
-    command: npm install
+    command: ["npm", "install"]
   - type: server
-    command: node server/server.js
+    command: ["node", "server/server.js"]
