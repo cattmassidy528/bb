@@ -43,7 +43,6 @@ const Withdraw = () => {
                     setTotal(response.data.user.balance);
                 } catch (error) {
                     console.error('Error fetching profile data:', error);
-                    console.error('An error occurred while fetching profile data. Please try again later.');
                 }
             };
             fetchProfileTotal();
@@ -56,7 +55,6 @@ const Withdraw = () => {
         theme: 'colored',
         hideProgressBar: true,
         autoClose: 3000,
-
     })
 
     const nope = () => toast.error("withdraw unsuccessful. :(", {
@@ -65,7 +63,6 @@ const Withdraw = () => {
         theme: 'colored',
         hideProgressBar: true,
         autoClose: 3000,
-
     })
 
     const handleSubmit = (e) => {
@@ -75,10 +72,8 @@ const Withdraw = () => {
             // setWithdrawAmount('')
             return null
         }
-
         yup()
         taketh(withdrawAmount)
-
         const withdrawCall = async () => {
             try {
                 const token = localStorage.getItem('token');
@@ -94,7 +89,6 @@ const Withdraw = () => {
         };
         withdrawCall();
         // setWithdrawAmount('')
-
     }
 
     const handleInputChange = (e) => {

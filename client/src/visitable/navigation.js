@@ -102,7 +102,6 @@ const Navigation = () => {
       <Tooltip place="top" effect="float" id={"deposittool"} />
       <Tooltip place="top" effect="float" id={"withdrawtool"} />
       <Tooltip place="top" effect="float" id={"userprofiletool"} />
-      {/* <Tooltip place="top" effect="float" id={"alldatatool"} /> */}
     </>
   );
 };

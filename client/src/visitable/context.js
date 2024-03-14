@@ -9,7 +9,7 @@ const AccountContextProvider = ({ children }) => {
   const [pastBal, setPastBal] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
   const [profileData, setProfileData] = useState([])
-  const [balance, setBalance] = useState(0); // Initialize balance to 0
+  const [balance, setBalance] = useState(0);
 
   useEffect(() => {
     if (currentUser) {
@@ -19,7 +19,6 @@ const AccountContextProvider = ({ children }) => {
           const response = await axios.get(`/api/auth/profile/${currentUser}`, {
             headers: { Authorization: `Bearer ${token}` }
           });
-          console.log("contextjs response.data: " + response.data.user.username);
           setProfileData(response.data)
 
         } catch (error) {
@@ -30,38 +29,24 @@ const AccountContextProvider = ({ children }) => {
     }
   }, [currentUser, setProfileData]);
 
-
-  ///// REGISTER USER ////////// REGISTER USER ////////// REGISTER USER /////  
-  // const registerUser = (userData) => {
-  //   setUser(userData)
-  //   setAllUsers((prevAllUsers) => {
-  //     return [...prevAllUsers, user];
-  //   });
-  // }
-  ///// LOGIN ////////// LOGIN ////////// LOGIN /////
   const login = (userData) => {
     setUser(userData);
     setAllUsers((prevAllUsers) => {
       return [...prevAllUsers, user];
     });
-    console.log("currentUser login func in context line 53" + currentUser)
   };
-  ///// GIVETH ////////// GIVETH ////////// GIVETH /////
   const giveth = (n) => {
     setUserBal(userBal + n);
     setPastBal((prevPastBal) => {
       return [...prevPastBal, userBal];
     });
   };
-  ///// TAKETH ////////// TAKETH ////////// TAKETH /////
   const taketh = (n) => {
     setUserBal(userBal - n);
     setPastBal((prevPastBal) => {
       return [...prevPastBal, userBal];
     });
   };
-
-
 
   const contextValue = {
     setBalance,
