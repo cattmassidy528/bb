@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile.server
     image: registry.heroku.com/bad-bank-matthew-cassidy/bb-server-img:latest
     container_name: bb-server-container
-    command: /usr/src/app/node_modules/.bin/node server.js
+    command: node server/server.js
     ports:
       - "5000:5000"
     env_file: ./server/.env
