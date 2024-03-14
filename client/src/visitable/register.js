@@ -108,7 +108,6 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
         hooray();
         console.log(response.data);
       } catch (error) {
-        console.error("Error during registration:", error);
         setTf(false);
         woops(arrayOfRegisterWrongs[3]);
         handleClearFormSubmit(e);

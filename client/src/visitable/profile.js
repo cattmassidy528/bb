@@ -19,9 +19,6 @@ const Profile = () => {
   })
 
   useEffect(() => {
-    if (currentUser) {
-      console.log("profilejs useEffect currentUser: " + currentUser)
-    }
     if (!currentUser) {
       setCurrentUser(JSON.parse(localStorage.getItem('currentUser')))
     }
@@ -37,9 +34,7 @@ const Profile = () => {
           });
           setLoading(false); // Set loading to false after data is fetched
           setProfileData(response.data); // Set profile data to the response data object
-          console.log(localStorage.getItem('token'))
         } catch (error) {
-          console.error('Error fetching profile data:', error);
           setError('An error occurred while fetching profile data. Please try again later.');
           setLoading(false); // Set loading to false in case of error
         }

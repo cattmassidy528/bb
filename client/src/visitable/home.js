@@ -1,6 +1,5 @@
 import "./css/home.css";
 import bankImg from "./images/bank-clip.png";
-// import { Link } from "react-router-dom";
 import { useState } from "react";
 import SignUp from "./register";
 import Login from "./login";

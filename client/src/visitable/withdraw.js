@@ -89,8 +89,6 @@ const Withdraw = () => {
                 setProfileData(response.data)
                 setUsingTotal(false)
             } catch (error) {
-                console.log("withdrawAmount in withdrawcall error: " + withdrawAmount)
-                console.error('Error making deposit (deposit.js - axios call): ', error);
                 setWithdrawError('An error occurred while making withdraw. get rekt lmao.');
             }
         };

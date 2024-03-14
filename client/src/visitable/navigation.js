@@ -5,13 +5,11 @@ import "react-tooltip/dist/react-tooltip.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { AccountContext } from "./context";
-// import { useParams } from "react-router-dom";
 
 const Navigation = () => {
 
   const { currentUser } = useContext(AccountContext)
   const location = useLocation();
-  // const { username } = useParams();
 
   const isActive = (path) => {
     const formattedPath = `/visitable/profile/${currentUser}`;
@@ -78,16 +76,7 @@ const Navigation = () => {
                   Withdraw
                 </Link>
               </li>
-              <li className={`nav-item ${isActive("/visitable/alldata")}`}>
-                <Link
-                  className="nav-link"
-                  data-tooltip-content="Details of accounts and transactions"
-                  data-tooltip-id={"alldatatool"}
-                  to="/visitable/alldata"
-                >
-                  All Data
-                </Link>
-              </li>
+
               <li className={`nav-item ${isActive("/visitable/logout")}`}>
                 <Link
                   className="nav-link"
@@ -113,7 +102,7 @@ const Navigation = () => {
       <Tooltip place="top" effect="float" id={"deposittool"} />
       <Tooltip place="top" effect="float" id={"withdrawtool"} />
       <Tooltip place="top" effect="float" id={"userprofiletool"} />
-      <Tooltip place="top" effect="float" id={"alldatatool"} />
+      {/* <Tooltip place="top" effect="float" id={"alldatatool"} /> */}
     </>
   );
 };
