@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const bcryptjs = require("bcryptjs");
 const secretKey = process.env.SECRET_KEY;
 const User = require("../models/userModel");
-const { generateToken } = require('../config/jwtUtils'); // Import your custom token generation function
+const { generateToken } = require('../config/jwtUtils');
 
 /////     /////     /////     /////     /////     /////     /////     /////     /////     /////     /////
 ///// REGISTER ////////// REGISTER ////////// REGISTER ////////// REGISTER ////////// REGISTER ////////// REGISTER /////
