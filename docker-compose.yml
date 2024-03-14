@@ -4,16 +4,11 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile.server
-    image: bb-server-img
+    image: registry.heroku.com/bad-bank-matthew-cassidy/bb-server-img
     container_name: bb-server-container
     command: /usr/src/app/node_modules/.bin/nodemon server.js
-    volumes:
-      - ./server/:/usr/src/app
-      - /usr/src/app/node_modules
     ports:
       - "5000:5000"
-    depends_on:
-      - mongo
     env_file: ./server/.env
     environment:
       - NODE_ENV=production
@@ -25,12 +20,9 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile.client
-    image: bb-client-img
+    image: registry.heroku.com/bad-bank-matthew-cassidy/bb-client-img
     container_name: bb-client-container
     command: npm start
-    volumes:
-      - ./client/:/usr/src/app
-      - /usr/app/node_modules
     depends_on:
       - server
     ports:
@@ -44,7 +36,3 @@ services:
 networks:
   app-network:
     driver: bridge
-volumes:
-  data-volume:
-  node_modules:
-    driver: local

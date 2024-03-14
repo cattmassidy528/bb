@@ -7,3 +7,4 @@
 # EXPOSE 27017
 
 # CMD ["mongod"]
+      image: registry.heroku.com/bad-bank-matthew-cassidy/bb-client-img
