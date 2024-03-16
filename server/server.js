@@ -17,10 +17,10 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
 });
 
-const uri = "mongodb+srv://admin:123passwd321@bb-mongo-1.osmaqiw.mongodb.net/bb-mongo-1?retryWrites=true&w=majority&appName=bb-mongo-1"
+// const uri = "mongodb+srv://admin:123passwd321@bb-mongo-1.osmaqiw.mongodb.net/bb-mongo-1?retryWrites=true&w=majority&appName=bb-mongo-1"
 
 mongoose
-  .connect(uri, {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
