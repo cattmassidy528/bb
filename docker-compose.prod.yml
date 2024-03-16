@@ -7,8 +7,6 @@ services:
     image: registry.heroku.com/bad-bank-matthew-cassidy/bb-server-img:latest
     container_name: bb-server-container
     command: node server/server.js
-    ports:
-      - "5000:5000"
     env_file: ./server/.env
     environment:
       - NODE_ENV=production
@@ -25,10 +23,6 @@ services:
     command: npm start
     depends_on:
       - server
-    ports:
-      - "3000:3000"
-    stdin_open: true
-    tty: true
     restart: always
     networks:
       - app-network
