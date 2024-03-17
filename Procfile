@@ -1,1 +1,1 @@
-web: docker-compose -f docker-compose.prod.yml up
+web: docker-compose up --build -d
