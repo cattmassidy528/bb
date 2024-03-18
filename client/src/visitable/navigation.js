@@ -10,7 +10,6 @@ const Navigation = () => {
 
   const { currentUser } = useContext(AccountContext)
   const location = useLocation();
-
   const isActive = (path) => {
     const formattedPath = `/visitable/profile/${currentUser}`;
     return location.pathname.startsWith(formattedPath) ? "active" : "";
