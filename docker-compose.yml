@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile.server
     image: registry.heroku.com/bad-bank-matthew-cassidy/bb-server-img:latest
     container_name: bb-server-container
-    command: node server/server.js
+    command: node server.js
     env_file: ./server/.env
     environment:
       - NODE_ENV=production
