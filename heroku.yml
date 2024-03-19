@@ -1,5 +1,5 @@
 build:
-  client:
+  frontend:
     docker:
       web: client/Dockerfile
   backend:
