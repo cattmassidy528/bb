@@ -1,10 +1,6 @@
 build:
-  client:
-    docker:
-      web: bb/client/Dockerfile
-  server:
-    docker:
-      web: bb/server/Dockerfile
+  web: /bb/client/Dockerfile
+  worker: /bb/server/Dockerfile
 
 run:
   web: npm start
