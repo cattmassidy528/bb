@@ -1,6 +1,7 @@
 build:
   docker:
-    web: ./server/Dockerfile
+    web: ./client/Dockerfile
+    worker: ./server/Dockerfile
 
 run:
   web: node server.js
