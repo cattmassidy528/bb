@@ -1,11 +1,10 @@
 build:
-  frontend:
+  client:
     docker:
-      web: client/Dockerfile
-  backend:
+      web: bb/client/Dockerfile
+  server:
     docker:
-      worker: server/Dockerfile
+      web: bb/server/Dockerfile
 
 run:
   web: npm start
-  worker: node server.js
