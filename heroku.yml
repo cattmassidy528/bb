@@ -4,10 +4,8 @@ build:
       web: client/Dockerfile
   backend:
     docker:
-      web: server/Dockerfile
+      worker: server/Dockerfile
 
 run:
-  frontend:
-    command: npm start
-  backend:
-    command: node server.js
+  web: npm start
+  worker: node server.js
