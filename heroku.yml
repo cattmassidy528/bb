@@ -1,6 +1,6 @@
 build:
-  web: /bb/client/Dockerfile
-  worker: /bb/server/Dockerfile
+  web: bb/client/Dockerfile
+  worker: bb/server/Dockerfile
 
 run:
   web: npm start
