@@ -1,5 +1,7 @@
 FROM node:20.11.0
 
+ENV CI=true
+
 WORKDIR /usr/src/app
 
 COPY package*.json ./
