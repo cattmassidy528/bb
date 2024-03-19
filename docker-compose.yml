@@ -3,22 +3,22 @@ services:
   server:
     build:
       context: ./server
-      dockerfile: Dockerfile.server
-    image: registry.heroku.com/bad-bank-matthew-cassidy/bb-server-img:latest
+      dockerfile: Dockerfile
+    image: registry.heroku.com/bad-bank-matthew-cassidy/bb-server-img:v1.0
     container_name: bb-server-container
     command: node server.js
     env_file: ./server/.env
     environment:
       - NODE_ENV=production
+      - MONGODB_URI=mongodb+srv://admin:123passwd321@bb-mongo-1.osmaqiw.mongodb.net/bb-mongo-1?retryWrites=true&w=majority&appName=bb-mongo-1
     restart: always
     networks:
       - app-network
-
   client:
     build:
       context: ./client
-      dockerfile: Dockerfile.client
-    image: registry.heroku.com/bad-bank-matthew-cassidy/bb-client-img:latest
+      dockerfile: Dockerfile
+    image: registry.heroku.com/bad-bank-matthew-cassidy/bb-client-img:v1.0
     container_name: bb-client-container
     command: npm start
     depends_on:
