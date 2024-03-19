@@ -4,6 +4,8 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
+COPY ./ ./
+
 RUN npm ci --silent
 
 COPY generateSecKey.js ./
