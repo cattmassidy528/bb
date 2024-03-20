@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AccountContext } from "./context";
-// import axios from "axios";
+import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
-  const { setCurrentUser, currentUser, profileData, /*setProfileData */ } = useContext(AccountContext);
+  const { setCurrentUser, currentUser, profileData, setProfileData, API } = useContext(AccountContext);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const params = useParams();
@@ -25,7 +25,7 @@ const Profile = () => {
   }, [params.username, currentUser, setCurrentUser]);
   useEffect(() => {
     if (profileData) {
-      setLoading(false); // Set loading to false after data is fetched
+      setLoading(false);
     }
     else {
       setError('An error occurred while fetching profile data. Please try again later.');
@@ -34,31 +34,31 @@ const Profile = () => {
 
   }, [profileData])
 
-  // useEffect(() => {
-  //   if (currentUser) {
-  //     const fetchProfile = async () => {
-  //       try {
-  //         const token = localStorage.getItem('token');
-  //         const response = await axios.get(`/api/auth/profile/${currentUser}`, {
-  //           headers: { Authorization: `Bearer ${token}` }
-  //         });
-  //         setLoading(false); // Set loading to false after data is fetched
-  //         setProfileData(response.data); // Set profile data to the response data object
-  //       } catch (error) {
-  //         setError('An error occurred while fetching profile data. Please try again later.');
-  //         setLoading(false); // Set loading to false in case of error
-  //       }
-  //     };
-  //     fetchProfile();
-  //   }
-  // }, [currentUser, setProfileData]);
+  useEffect(() => {
+    if (currentUser) {
+      const fetchProfile = async () => {
+        try {
+          const token = localStorage.getItem('token');
+          const response = await axios.get(`${API}/api/auth/profile/${currentUser}`, {
+            headers: { Authorization: `Bearer ${token}` }
+          });
+          setLoading(false); // Set loading to false after data is fetched
+          setProfileData(response.data); // Set profile data to the response data object
+        } catch (error) {
+          setError('An error occurred while fetching profile data. Please try again later.');
+          setLoading(false); // Set loading to false in case of error
+        }
+      };
+      fetchProfile();
+    }
+  }, [currentUser, setProfileData, API]);
 
   if (loading) {
-    return <div>Loading...</div>; // Render loading state
+    return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div>Error: {error}</div>; // Render error state
+    return <div>Error: {error}</div>;
   }
 
 

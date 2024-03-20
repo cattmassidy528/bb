@@ -11,23 +11,24 @@ const AccountContextProvider = ({ children }) => {
   const [profileData, setProfileData] = useState([])
   const [balance, setBalance] = useState(0);
 
+  const API = process.env.NODE_ENV === 'production' ? 'https://bad-bank-matthew-cassidy-709735df14a5.herokuapp.com' : 'http://localhost:5000/api';
+
   useEffect(() => {
     if (currentUser) {
       const fetchProfile = async () => {
         try {
           const token = localStorage.getItem('token');
-          const response = await axios.get(`/api/auth/profile/${currentUser}`, {
+          const response = await axios.get(`${API}/api/auth/profile/${currentUser}`, {
             headers: { Authorization: `Bearer ${token}` }
           });
           setProfileData(response.data)
-
         } catch (error) {
           console.error('Error fetching balance data (context - useEffect): ', error);
         }
       };
       fetchProfile();
     }
-  }, [currentUser, setProfileData]);
+  }, [currentUser, setProfileData, API]);
 
   const login = (userData) => {
     setUser(userData);
@@ -63,6 +64,7 @@ const AccountContextProvider = ({ children }) => {
     setAllUsers,
     allUsers,
     login,
+    API,
   };
 
   return (

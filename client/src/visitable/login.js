@@ -6,7 +6,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ loginOrRegister, setLoginOrRegister }) => {
+const Login = ({ loginOrRegister, setLoginOrRegister, API }) => {
   const [tf, setTf] = useState(false);
   const { login, setAllUsers, setCurrentUser, currentUser } = useContext(AccountContext);
   const navigate = useNavigate();
@@ -23,9 +23,9 @@ const Login = ({ loginOrRegister, setLoginOrRegister }) => {
     }
 
     if (currentUser) {
-      navigate(`/visitable/profile/${currentUser}`);
+      navigate(`${API}/visitable/profile/${currentUser}`);
     }
-  }, [currentUser, navigate]);
+  }, [currentUser, navigate, API]);
 
   const arrayOfLoginWrongs = [
     "username field empty or not in database or some other reason i can't remember.",

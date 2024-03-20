@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 5000;
 
 const authRoutes = require("./routes/authRoutes");
 const mainRoutes = require("./routes/mainRoutes");
+const API = process.env.NODE_ENV === 'production' ? 'https://bad-bank-matthew-cassidy-709735df14a5.herokuapp.com/' : 'http://localhost:5000/api';
 
 app.use(cors());
 app.use(express.json());
