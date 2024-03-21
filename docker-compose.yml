@@ -4,7 +4,7 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
-    image: registry.heroku.com/bad-bank-matthew-cassidy/bb-server-img:v3.0
+    image: registry.heroku.com/bad-bank-matthew-cassidy/bb-server-img:v4.0
     container_name: bb-server-container
     command: node server.js
     env_file: ./server/.env
@@ -18,7 +18,7 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile
-    image: registry.heroku.com/bad-bank-matthew-cassidy/bb-client-img:v3.0
+    image: registry.heroku.com/bad-bank-matthew-cassidy/bb-client-img:v4.0
     container_name: bb-client-container
     command: npm start
     depends_on:
