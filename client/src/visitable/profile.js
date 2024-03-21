@@ -5,11 +5,12 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
-  const { setCurrentUser, currentUser, profileData, setProfileData, API } = useContext(AccountContext);
+  const { setCurrentUser, currentUser, /*profileData, setProfileData,*/ API } = useContext(AccountContext);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const params = useParams();
   const navigate = useNavigate();
+  const [profileData, setProfileData] = useState([])
 
   useEffect(() => {
     const token = localStorage.getItem('token')
