@@ -5,8 +5,8 @@ export const AccountContext = createContext();
 const AccountContextProvider = ({ children }) => {
   const [user, setUser] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
-  const [userBal, setUserBal] = useState(0);
-  const [pastBal, setPastBal] = useState([]);
+  // const [userBal, setUserBal] = useState(0);
+  // const [pastBal, setPastBal] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
   // const [profileData, setProfileData] = useState([])
   const [balance, setBalance] = useState(0);
@@ -36,18 +36,18 @@ const AccountContextProvider = ({ children }) => {
       return [...prevAllUsers, user];
     });
   };
-  const giveth = (n) => {
-    setUserBal(userBal + n);
-    setPastBal((prevPastBal) => {
-      return [...prevPastBal, userBal];
-    });
-  };
-  const taketh = (n) => {
-    setUserBal(userBal - n);
-    setPastBal((prevPastBal) => {
-      return [...prevPastBal, userBal];
-    });
-  };
+  // const giveth = (n) => {
+  //   setUserBal(userBal + n);
+  //   setPastBal((prevPastBal) => {
+  //     return [...prevPastBal, userBal];
+  //   });
+  // };
+  // const taketh = (n) => {
+  //   setUserBal(userBal - n);
+  //   setPastBal((prevPastBal) => {
+  //     return [...prevPastBal, userBal];
+  //   });
+  // };
 
   const contextValue = {
     setBalance,
@@ -56,10 +56,10 @@ const AccountContextProvider = ({ children }) => {
     // setProfileData,
     currentUser,
     setCurrentUser,
-    userBal,
-    giveth,
-    pastBal,
-    taketh,
+    // userBal,
+    // giveth,
+    // pastBal,
+    // taketh,
     user,
     setAllUsers,
     allUsers,
