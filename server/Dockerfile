@@ -14,6 +14,6 @@ RUN node generateSecKey.js
 
 ENV SECRET_KEY=$SECRET_KEY
 
-COPY . .
+COPY ./ ./
 
 CMD ["node", "server.js"]
