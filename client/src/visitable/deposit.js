@@ -75,7 +75,7 @@ const Deposit = () => {
         const depositCall = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.post(`${API}/auth/profile/${currentUser}/deposit`,
+                const response = await axios.post(`${API}/api/auth/profile/${currentUser}/deposit`,
                     { currentUser, depositAmount }, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
