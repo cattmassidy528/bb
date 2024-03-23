@@ -11,7 +11,7 @@ const AccountContextProvider = ({ children }) => {
   // const [profileData, setProfileData] = useState([])
   const [balance, setBalance] = useState(0);
 
-  const API = process.env.NODE_ENV === 'production' ? 'https://bad-bank-matthew-cassidy-709735df14a5.herokuapp.com' : 'http://localhost:5000/api';
+  const API = process.env.NODE_ENV === 'production' ? 'https://bad-bank-matthew-cassidy-709735df14a5.herokuapp.com' : 'https://bad-bank-matthew-cassidy-709735df14a5.herokuapp.com';
 
   // useEffect(() => {
   //   if (currentUser) {
