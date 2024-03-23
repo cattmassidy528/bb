@@ -97,7 +97,7 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
 
       try {
         const response = await axios.post(
-          `${API}/api/auth/register`,
+          `${API}/auth/register`,
           userData,
           {
             headers: {

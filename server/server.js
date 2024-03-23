@@ -43,7 +43,7 @@ if (cluster.isMaster) {
 
   // Connect to MongoDB
   mongoose
-    .connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/bb-mongo-1', {
+    .connect(process.env.MONGODB_URI || '', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })

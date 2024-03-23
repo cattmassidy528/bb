@@ -6,9 +6,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ loginOrRegister, setLoginOrRegister, API }) => {
+const Login = ({ loginOrRegister, setLoginOrRegister }) => {
   const [tf, setTf] = useState(false);
-  const { login, setAllUsers, setCurrentUser, currentUser } = useContext(AccountContext);
+  const { login, setAllUsers, setCurrentUser, currentUser, API } = useContext(AccountContext);
   const navigate = useNavigate();
 
   const [userData, setUserData] = useState({
@@ -61,11 +61,11 @@ const Login = ({ loginOrRegister, setLoginOrRegister, API }) => {
   const handleClearForm = (e) => {
     e.preventDefault();
     setUserData({
-      username: userData.username,
-      email: userData.email,
-      password: '',
+      ...userData
     })
   }
+
+
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
@@ -89,7 +89,7 @@ const Login = ({ loginOrRegister, setLoginOrRegister, API }) => {
 
       try {
         const response = await axios.post(
-          '/api/auth/login',
+          `${API}/auth/login`,
           userData,
           {
             headers: {
