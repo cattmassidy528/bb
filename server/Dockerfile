@@ -1,10 +1,8 @@
-FROM node:20.11.0
+FROM node:16-alpine AS build
 
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-
-COPY ./ ./
 
 RUN npm ci --silent
 
@@ -14,6 +12,6 @@ RUN node generateSecKey.js
 
 ENV SECRET_KEY=$SECRET_KEY
 
-COPY ./ ./
+COPY . .
 
 CMD ["node", "server.js"]
