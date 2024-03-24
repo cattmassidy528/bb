@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { AccountContext } from "./context";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
+// import axios from "axios";
 import { Link } from "react-router-dom";
 
 const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
@@ -96,8 +96,8 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
       });
 
       try {
-        const response = await axios.post(
-          `${API}/api/auth/register`,
+        const response = await API.post(
+          `/api/auth/register`,
           userData,
           {
             headers: {

@@ -40,7 +40,7 @@ const Profile = () => {
       const fetchProfile = async () => {
         try {
           const token = localStorage.getItem('token');
-          const response = await axios.get(`${API}/api/auth/profile/${currentUser}`, {
+          const response = await API.get(`/api/auth/profile/${currentUser}`, {
             headers: { Authorization: `Bearer ${token}` }
           });
           setLoading(false); // Set loading to false after data is fetched

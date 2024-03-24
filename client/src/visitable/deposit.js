@@ -34,7 +34,7 @@ const Deposit = () => {
             const fetchProfileTotal = async () => {
                 try {
                     const token = localStorage.getItem('token');
-                    const response = await axios.get(`${API}/api/auth/profile/${currentUser}/total`, {
+                    const response = await axios.get(`/api/auth/profile/${currentUser}/total`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     setTotal(response.data.user.balance);
@@ -44,7 +44,7 @@ const Deposit = () => {
             };
             fetchProfileTotal();
         }
-    }, [currentUser, setProfileData, total, API]);
+    }, [currentUser, setProfileData, total]);
 
     const yup = () => toast.success("deposit successful! :)", {
         position: 'top-center',
@@ -75,7 +75,7 @@ const Deposit = () => {
         const depositCall = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.post(`${API}/api/auth/profile/${currentUser}/deposit`,
+                const response = await API.post(`/api/auth/profile/${currentUser}/deposit`,
                     { currentUser, depositAmount }, {
                     headers: { Authorization: `Bearer ${token}` }
                 });

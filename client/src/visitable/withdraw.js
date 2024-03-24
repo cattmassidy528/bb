@@ -37,7 +37,7 @@ const Withdraw = () => {
             const fetchProfileTotal = async () => {
                 try {
                     const token = localStorage.getItem('token');
-                    const response = await axios.get(`${API}/api/auth/profile/${currentUser}/total`, {
+                    const response = await API.get(`/api/auth/profile/${currentUser}/total`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     setTotal(response.data.user.balance);

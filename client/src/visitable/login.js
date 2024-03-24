@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { AccountContext } from "./context";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
+// import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -23,9 +23,9 @@ const Login = ({ loginOrRegister, setLoginOrRegister }) => {
     }
 
     if (currentUser) {
-      navigate(`${API}/visitable/profile/${currentUser}`);
+      navigate(`/visitable/profile/${currentUser}`);
     }
-  }, [currentUser, navigate, API]);
+  }, [currentUser, navigate]);
 
   const arrayOfLoginWrongs = [
     "username field empty or not in database or some other reason i can't remember.",
@@ -88,8 +88,8 @@ const Login = ({ loginOrRegister, setLoginOrRegister }) => {
       });
 
       try {
-        const response = await axios.post(
-          `${API}/api/auth/login`,
+        const response = await API.post(
+          `/api/auth/login`,
           userData,
           {
             headers: {
