@@ -133,15 +133,15 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
               <form onSubmit={(e) => handleSignupSubmit(e)}>
                 <div className="form-group ms-5 me-5">
                   <div className="m-3 ">
-                    <input className="form-control border border-2 border-secondary shadow-lg" type="text" name="username" value={userData.username} onChange={(e) => handleFormChange(e)} placeholder="username" autoFocus
+                    <input className="form-control border border-2 border-secondary shadow-lg" type="text" name="username" autoComplete="username" value={userData.username} onChange={(e) => handleFormChange(e)} placeholder="username" autoFocus
                     />
                   </div>
                   <div className="m-3">
-                    <input className="form-control border border-2 border-secondary shadow-lg" type="text" name="email" value={userData.email} onChange={(e) => handleFormChange(e)} placeholder="email"
+                    <input className="form-control border border-2 border-secondary shadow-lg" type="text" name="email" autoComplete="email" value={userData.email} onChange={(e) => handleFormChange(e)} placeholder="email"
                     />
                   </div>
                   <div className="m-3">
-                    <input className="form-control border border-2 border-secondary shadow-lg" type="password" name="password" value={userData.password} onChange={(e) => handleFormChange(e)} placeholder="password"
+                    <input className="form-control border border-2 border-secondary shadow-lg" type="password" name="password" autoComplete="" value={userData.password} onChange={(e) => handleFormChange(e)} placeholder="password"
                     />
                   </div>
                 </div>

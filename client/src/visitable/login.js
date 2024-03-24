@@ -135,6 +135,7 @@ const Login = ({ loginOrRegister, setLoginOrRegister }) => {
                       className="form-control border border-2 border-secondary shadow-lg"
                       type="text"
                       name="username"
+                      autoComplete="username"
                       value={userData.username}
                       onChange={(e) => handleFormChange(e)}
                       placeholder="username"
@@ -146,6 +147,7 @@ const Login = ({ loginOrRegister, setLoginOrRegister }) => {
                       className="form-control border border-2 border-secondary shadow-lg"
                       type="password"
                       name="password"
+                      autoComplete="off"
                       value={userData.password}
                       onChange={(e) => handleFormChange(e)}
                       placeholder="password"
