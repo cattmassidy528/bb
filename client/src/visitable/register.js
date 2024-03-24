@@ -141,7 +141,7 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
                     />
                   </div>
                   <div className="m-3">
-                    <input className="form-control border border-2 border-secondary shadow-lg" type="password" name="password" autoComplete="" value={userData.password} onChange={(e) => handleFormChange(e)} placeholder="password"
+                    <input className="form-control border border-2 border-secondary shadow-lg" type="password" name="password" autoComplete="off" value={userData.password} onChange={(e) => handleFormChange(e)} placeholder="password"
                     />
                   </div>
                 </div>
