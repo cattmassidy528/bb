@@ -1,0 +1,2 @@
+web: npm --prefix client start
+worker: node server/server.js
