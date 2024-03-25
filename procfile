@@ -1,2 +1,2 @@
-web: npm --prefix client start
+web: cd client && npm start
 worker: node server/server.js
