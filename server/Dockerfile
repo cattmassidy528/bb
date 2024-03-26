@@ -1,6 +1,6 @@
 FROM node:16.20.1
 
-WORKDIR /usr/src/app/server
+WORKDIR /usr/src/app
 
 COPY package*.json ./
 
@@ -12,6 +12,6 @@ RUN node generateSecKey.js
 
 ENV SECRET_KEY=$SECRET_KEY
 
-COPY . ./usr/src/app/server
+COPY . .
 
 CMD ["node", "server.js"]
