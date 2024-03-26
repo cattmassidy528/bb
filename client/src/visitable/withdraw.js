@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 
 const Withdraw = () => {
-    const { taketh, currentUser, setCurrentUser, profileData, setProfileData, API } = useContext(AccountContext)
+    const { taketh, currentUser, setCurrentUser, profileData, setProfileData } = useContext(AccountContext)
     const [withdrawAmount, setWithdrawAmount] = useState('')
     const [withdrawError, setWithdrawError] = useState(null)
     const [usingTotal, setUsingTotal] = useState(true)
@@ -37,7 +37,7 @@ const Withdraw = () => {
             const fetchProfileTotal = async () => {
                 try {
                     const token = localStorage.getItem('token');
-                    const response = await API.get(`/api/auth/profile/${currentUser}/total`, {
+                    const response = await axios.get(`/api/auth/profile/${currentUser}/total`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     setTotal(response.data.user.balance);
@@ -47,7 +47,7 @@ const Withdraw = () => {
             };
             fetchProfileTotal();
         }
-    }, [currentUser, setProfileData, total, API]);
+    }, [currentUser, setProfileData, total]);
 
     const yup = () => toast.success("withdraw successful! :)", {
         position: 'top-center',
@@ -77,7 +77,7 @@ const Withdraw = () => {
         const withdrawCall = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.post(`${API}/api/auth/profile/${currentUser}/withdraw`,
+                const response = await axios.post(`/api/auth/profile/${currentUser}/withdraw`,
                     { currentUser, withdrawAmount }, {
                     headers: { Authorization: `Bearer ${token}` }
                 });

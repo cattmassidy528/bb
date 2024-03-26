@@ -1,4 +1,4 @@
-FROM node:14.17.6-slim
+FROM node:16.20.1
 
 ENV CI=true
 

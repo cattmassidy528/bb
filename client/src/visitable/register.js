@@ -2,12 +2,12 @@ import React, { useContext, useState, useEffect } from "react";
 import { AccountContext } from "./context";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import axios from "axios";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
   const [tf, setTf] = useState(false);
-  const { login, setAllUsers, API } = useContext(AccountContext);
+  const { login, setAllUsers } = useContext(AccountContext);
   const token = localStorage.getItem('token');
 
   useEffect(() => {
@@ -96,7 +96,7 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
       });
 
       try {
-        const response = await API.post(
+        const response = await axios.post(
           `/api/auth/register`,
           userData,
           {

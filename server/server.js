@@ -12,7 +12,7 @@ const mainRoutes = require("./routes/mainRoutes");
 app.use(cors());
 app.use(express.json());
 
-
+app.use(cors({ origin: 'https://bad-bank-matthew-cassidy-709735df14a5.herokuapp.com/' }))
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
 });

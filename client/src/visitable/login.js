@@ -2,13 +2,13 @@ import React, { useContext, useState, useEffect } from "react";
 import { AccountContext } from "./context";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import axios from "axios";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const Login = ({ loginOrRegister, setLoginOrRegister }) => {
   const [tf, setTf] = useState(false);
-  const { login, setAllUsers, setCurrentUser, currentUser, API } = useContext(AccountContext);
+  const { login, setAllUsers, setCurrentUser, currentUser } = useContext(AccountContext);
   const navigate = useNavigate();
 
   const [userData, setUserData] = useState({
@@ -88,7 +88,7 @@ const Login = ({ loginOrRegister, setLoginOrRegister }) => {
       });
 
       try {
-        const response = await API.post(
+        const response = await axios.post(
           `/api/auth/login`,
           userData,
           {

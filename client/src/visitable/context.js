@@ -1,5 +1,4 @@
 import React, { useState, createContext } from "react";
-import axios from "axios";
 
 export const AccountContext = createContext();
 
@@ -13,11 +12,11 @@ const AccountContextProvider = ({ children }) => {
   const [balance, setBalance] = useState(0);
 
   // const API = process.env.NODE_ENV === 'production' ? 'https://bad-bank-matthew-cassidy-709735df14a5.herokuapp.com' : 'https://bad-bank-matthew-cassidy-709735df14a5.herokuapp.com';
-  const API_BASE_URL = 'https://bad-bank-matthew-cassidy-709735df14a5.herokuapp.com'; // Replace 'your-backend' with your actual Heroku app name
+  // const API_BASE_URL = 'https://bad-bank-matthew-cassidy-709735df14a5.herokuapp.com'; // Replace 'your-backend' with your actual Heroku app name
 
-  const API = axios.create({
-    baseURL: API_BASE_URL,
-  });
+  // const API = axios.create({
+  //   baseURL: API_BASE_URL,
+  // });
 
   // useEffect(() => {
   //   if (currentUser) {
@@ -70,7 +69,7 @@ const AccountContextProvider = ({ children }) => {
     setAllUsers,
     allUsers,
     login,
-    API,
+
   };
 
   return (
