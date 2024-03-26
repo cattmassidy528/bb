@@ -8,6 +8,8 @@
   },
   "scripts": {
     "start": "npm start",
+    "build": "npm run build-client && npm run build-server",
+    "lint": "eslint",
     "start:dev": "concurrently \"npm run start \" \"npm run dev\"",
     "deploy": "npm run build && cd npm start"
   },
@@ -32,6 +34,7 @@
   },
   "description": "",
   "devDependencies": {
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "eslint": "^8.8.0"
   }
 }
