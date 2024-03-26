@@ -13,6 +13,7 @@ services:
     restart: always
     networks:
       - app-network
+      
   client:
     build:
       context: ./client
