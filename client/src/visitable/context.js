@@ -8,7 +8,7 @@ const AccountContextProvider = ({ children }) => {
   // const [userBal, setUserBal] = useState(0);
   // const [pastBal, setPastBal] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
-  // const [profileData, setProfileData] = useState([])
+  const [profileData, setProfileData] = useState([])
   const [balance, setBalance] = useState(0);
 
   // const API = process.env.NODE_ENV === 'production' ? 'https://bad-bank-matthew-cassidy-709735df14a5.herokuapp.com' : 'https://bad-bank-matthew-cassidy-709735df14a5.herokuapp.com';
@@ -57,8 +57,8 @@ const AccountContextProvider = ({ children }) => {
   const contextValue = {
     setBalance,
     balance,
-    // profileData,
-    // setProfileData,
+    profileData,
+    setProfileData,
     currentUser,
     setCurrentUser,
     // userBal,
