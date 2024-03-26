@@ -7,7 +7,7 @@ services:
     image: registry.heroku.com/bad-bank-matthew-cassidy/bb-server-img
     container_name: bb-server-container
     command: node server.js
-    env_file: ./server/.env
+    env_file: .env
     environment:
       - NODE_ENV=production
     restart: always
