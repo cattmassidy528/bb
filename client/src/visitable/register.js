@@ -97,7 +97,7 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
 
       try {
         const response = await axios.post(
-          `https://bad-bank-matthew-cassidy-709735df14a5.herokuapp.com/worker/api/auth/register`,
+          `/api/auth/register`,
           userData,
           {
             headers: {
