@@ -14,4 +14,4 @@ ENV SECRET_KEY=$SECRET_KEY
 
 COPY . .
 
-CMD ["node", "server.js"]
+CMD [ "node", "server.js", "--bind", "0.0.0.0:$PORT" ]

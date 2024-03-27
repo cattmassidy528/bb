@@ -10,7 +10,7 @@ const mainRoutes = require("./routes/mainRoutes");
 
 // Use CORS middleware
 const corsOptions = {
-  origin: 'https://bad-bank-matthew-cassidy-709735df14a5.herokuapp.com',
+  origin: 'https://matt-cassidy-bad-bank-5cc76dcf76cf.herokuapp.com/',
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
