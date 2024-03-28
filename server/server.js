@@ -8,12 +8,13 @@ const PORT = process.env.PORT || 5000;
 const authRoutes = require("./routes/authRoutes");
 const mainRoutes = require("./routes/mainRoutes");
 
+app.use(cors())
 // Use CORS middleware
-const corsOptions = {
-  origin: 'https://matt-cassidy-bad-bank-5cc76dcf76cf.herokuapp.com/',
-  optionsSuccessStatus: 200
-};
-app.use(cors(corsOptions));
+// const corsOptions = {
+//   origin: 'https://matt-cassidy-bad-bank-5cc76dcf76cf.herokuapp.com/',
+//   optionsSuccessStatus: 200
+// };
+// app.use(cors(corsOptions));
 
 // Serve static files from the React build directory
 app.use(express.static(path.join(__dirname, 'client', 'build')));
