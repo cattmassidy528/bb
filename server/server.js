@@ -9,12 +9,15 @@ const authRoutes = require("./routes/authRoutes");
 const mainRoutes = require("./routes/mainRoutes");
 
 app.use(cors())
-// Use CORS middleware
-// const corsOptions = {
-//   origin: 'https://matt-cassidy-bad-bank-5cc76dcf76cf.herokuapp.com/',
-//   optionsSuccessStatus: 200
-// };
-// app.use(cors(corsOptions));
+
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => {
+  console.log("Connected to MongoDB");
+}).catch((error) => {
+  console.error("Error connecting to MongoDB:", error);
+});
 
 // Serve static files from the React build directory
 app.use(express.static(path.join(__dirname, 'client', 'build')));
@@ -28,15 +31,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => {
-  console.log("Connected to MongoDB");
-}).catch((error) => {
-  console.error("Error connecting to MongoDB:", error);
-});
 
 // Error handling middleware
 app.use((err, req, res, next) => {

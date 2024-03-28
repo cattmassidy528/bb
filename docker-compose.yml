@@ -1,10 +1,19 @@
 version: "3"
 services:
+  mongodb:
+    image: "mongo"
+    ports:
+      - "27017:27017"
+    volumes:
+      - /data/db
+    env_file:
+      - ./server/.env
+
   server:
     build:
       context: ./server
       dockerfile: Dockerfile
-    image: registry.heroku.com/matt-cassidy-bad-bank-5cc76dcf76cf/worker     
+    image: worker     
     command: node server.js
     env_file: ./server/.env
     environment:
@@ -17,7 +26,7 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile
-    image: registry.heroku.com/matt-cassidy-bad-bank-5cc76dcf76cf/web 
+    image: web 
     command: npm start
     depends_on:
       - server

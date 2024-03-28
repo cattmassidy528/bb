@@ -8,11 +8,9 @@
   },
   "scripts": {
     "start": "npm run start:server",
-    "build": "npm run build:client && npm run build:server",
-    "postinstall": "npm prune --production",
+    "build": "npm run build:client",
     "start:server": "cd server && node server.js",
     "build:client": "cd client && npm run build",
-    "build:server": "echo 'No build required for server side'",
     "heroku-postbuild": "npm run build"
   },
   "keywords": [],
