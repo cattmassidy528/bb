@@ -9,6 +9,12 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
   const [tf, setTf] = useState(false);
   const { login, setAllUsers } = useContext(AccountContext);
   const token = localStorage.getItem('token');
+  const baseURL = 'https://bb-matty-c-c6912daf84ea.herokuapp.com';
+
+  // Create an Axios instance with the base URL
+  const api = axios.create({
+    baseURL,
+  });
 
   useEffect(() => {
     if (token) {
@@ -96,8 +102,8 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
       });
 
       try {
-        const response = await axios.post(
-          `/api/auth/register`,
+        const response = await api.post(
+          '/api/auth/register',
           userData,
           {
             headers: {

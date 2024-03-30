@@ -7,16 +7,18 @@
     "node": "16.20.1"
   },
   "scripts": {
-    "start": "npm run start:server",
-    "build": "npm run build:client",
-    "start:server": "cd server && node server.js",
-    "build:client": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "start": "concurrently \"npm run start:client\" \"npm run start:server\"",
+    "build": "cd client && npm run build",
+    "build-server": "cd server && npm run build",
+    "start:client": "cd client && npm start",
+    "start:server": "cd server && npm start",
+    "serve": "node server/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "nodemon": "^2.0.19",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "concurrently": "^8.2.2",

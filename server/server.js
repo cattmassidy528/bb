@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 const authRoutes = require("./routes/authRoutes");
 const mainRoutes = require("./routes/mainRoutes");
 
-app.use(cors())
+app.use(cors({ origin: "*" })); // Allow all origins (*) temporarily for testing purposes
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
@@ -20,15 +20,14 @@ mongoose.connect(process.env.MONGODB_URI, {
 });
 
 // Serve static files from the React build directory
-app.use(express.static(path.join(__dirname, 'client', 'build')));
 
-// Define API routes
 app.use("/api/auth", authRoutes);
 app.use("/api/auth/profile", mainRoutes);
 
-// Serve the React app for any other routes
+app.use(express.static(path.join(__dirname, 'build')));
+
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 

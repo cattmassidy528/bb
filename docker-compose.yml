@@ -8,7 +8,9 @@ services:
       - /data/db
     env_file:
       - ./server/.env
-
+    networks:
+      - app-network
+      
   server:
     build:
       context: ./server
