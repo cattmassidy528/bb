@@ -6,7 +6,7 @@ COPY package*.json ./
 
 RUN npm install --silent
 
-RUN npm install --prefix ./client react-scripts 
+RUN npm install --prefix ./client react-scripts --silent
 
 COPY . .
 

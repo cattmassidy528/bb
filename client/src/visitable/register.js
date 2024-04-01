@@ -9,7 +9,7 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
   const [tf, setTf] = useState(false);
   const { login, setAllUsers } = useContext(AccountContext);
   const token = localStorage.getItem('token');
-  const baseURL = 'https://bb-matty-c-c6912daf84ea.herokuapp.com';
+  const baseURL = 'https://bb-mattyc-a82e02218b07.herokuapp.com/';
 
   // Create an Axios instance with the base URL
   const api = axios.create({
@@ -18,10 +18,8 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
 
   useEffect(() => {
     if (token) {
-
       console.log("token at register/login: " + token)
     }
-
   }, [token,])
 
   const [userData, setUserData] = useState({
