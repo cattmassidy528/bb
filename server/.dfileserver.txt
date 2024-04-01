@@ -16,24 +16,27 @@
 
 //CMD ["node", "server.js", "--bind", "0.0.0.0:$PORT"]
 
-FROM node:16.20.1-slim
 
-WORKDIR /app
+/////
 
-RUN mkdir -p /app/client /app/server 
+//FROM node:16.20.1-slim
 
-COPY package*.json ./
-COPY ./client/package*.json ./client/
-COPY ./server/package*.json ./server/
+//WORKDIR /app
 
-RUN npm i --silent --unsafe-perm
-RUN npm --prefix /app/client i --silent --unsafe-perm
-RUN npm --prefix /app/server i --silent --unsafe-perm
+//RUN mkdir -p /app/client /app/server 
 
-COPY . .
+//COPY package*.json ./
+//COPY ./client/package*.json ./client/
+//COPY ./server/package*.json ./server/
 
-WORKDIR /app/server
-
-ENV NODE_ENV=production
-
-CMD ["npm", "start"]
+//RUN npm i --silent --unsafe-perm
+//RUN npm --prefix /app/client i --silent --unsafe-perm
+//RUN npm --prefix /app/server i --silent --unsafe-perm
+//
+//COPY . .
+//
+//WORKDIR /app/server
+//
+//ENV NODE_ENV=production
+//
+//CMD ["npm", "start"]
