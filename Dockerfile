@@ -1,22 +1,29 @@
+
+
+# Base image
 FROM node:16.20.1-slim
 
+# Set the working directory
 WORKDIR /app
 
-RUN mkdir -p /app/client /app/server 
-
+# Install the dependencies
 COPY package*.json ./
-COPY ./client/package*.json ./client/
-COPY ./server/package*.json ./server/
+RUN npm install --silent
 
-RUN npm i --silent --unsafe-perm
-RUN npm --prefix /app/client i --silent --unsafe-perm
-RUN npm --prefix /app/server i --silent --unsafe-perm
-
+# Copy the application code
 COPY . .
 
+# Change ownership of the /app directory
+RUN chown -R node:node /app
 
+# Switch to the node user
+USER node
+
+# Build the frontend
+RUN cd client && npm run build
+
+# Expose the appropriate port
 EXPOSE 3000
 
-ENV NODE_ENV=production
-
+# Define the command to start the application
 CMD ["npm", "start"]

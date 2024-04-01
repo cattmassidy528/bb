@@ -1,3 +1,5 @@
 build:
   docker:
     web: Dockerfile
+run:
+  web: docker run --publish 3000:3000 web

@@ -8,11 +8,11 @@
   },
   "scripts": {
     "start": "concurrently \"npm run start:client\" \"npm run start:server\"",
-    "build": "cd client && npm run build",
-    "build-server": "cd server && npm run build",
-    "start:client": "cd client && npm start",
-    "start:server": "cd server && npm start",
-    "serve": "node server/server.js"
+    "build": "npm --prefix ./client run build",
+    "build-server": "npm --prefix ./server run build",
+    "start:client": "npm --prefix ./client start",
+    "start:server": "npm --prefix ./server start",
+    "serve": "node ./server/server.js"
   },
   "keywords": [],
   "author": "",
@@ -30,10 +30,10 @@
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.4.0",
     "mongoose": "^8.1.1",
-    "react-router-dom": "^6.21.2",
-    "webpack-dev-server": "^4.15.1"
+    "react-router-dom": "^6.21.2"
   },
   "description": "",
+  "webpack-dev-server": "^4.15.1",
   "devDependencies": {
     "eslint": "^8.8.0",
     "webpack-cli": "^5.1.4"
