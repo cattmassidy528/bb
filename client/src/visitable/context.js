@@ -11,18 +11,15 @@ const AccountContextProvider = ({ children }) => {
   const [profileData, setProfileData] = useState([])
   const [balance, setBalance] = useState(0);
 
-  const API_BASE_URL = 'https://bb-mattyc-a82e02218b07.herokuapp.com/';
 
-  const API = axios.create({
-    baseURL: API_BASE_URL,
-  });
+
 
   useEffect(() => {
     if (currentUser) {
       const fetchProfile = async () => {
         try {
           const token = localStorage.getItem('token');
-          const response = await axios.get(`${API}/api/auth/profile/${currentUser}`, {
+          const response = await axios.get(`/api/auth/profile/${currentUser}`, {
             headers: { Authorization: `Bearer ${token}` }
           });
           setProfileData(response.data)
@@ -32,7 +29,7 @@ const AccountContextProvider = ({ children }) => {
       };
       fetchProfile();
     }
-  }, [currentUser, setProfileData, API]);
+  }, [currentUser, setProfileData]);
 
   const login = (userData) => {
     setUser(userData);
@@ -68,7 +65,6 @@ const AccountContextProvider = ({ children }) => {
     setAllUsers,
     allUsers,
     login,
-
   };
 
   return (

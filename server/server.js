@@ -9,6 +9,20 @@ const authRoutes = require("./routes/authRoutes");
 const mainRoutes = require("./routes/mainRoutes");
 
 app.use(cors({ origin: "*" })); // Allow all origins (*) temporarily for testing purposes
+const whitelist = ["http://localhost:3000", "https://bb-mattyc-a82e02218b07.herokuapp.com/"];
+
+let corsOptions = {};
+// if (process.env.NODE_ENV === "production") {
+corsOptions = {
+  origin: whitelist,
+};
+// } else {
+// corsOptions = {
+// origin: "*",
+// };
+// }
+
+app.use(cors(corsOptions));
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,

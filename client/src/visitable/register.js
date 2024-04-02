@@ -2,19 +2,14 @@ import React, { useContext, useState, useEffect } from "react";
 import { AccountContext } from "./context";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
   const [tf, setTf] = useState(false);
   const { login, setAllUsers } = useContext(AccountContext);
   const token = localStorage.getItem('token');
-  const baseURL = 'https://bb-mattyc-a82e02218b07.herokuapp.com/';
 
-  // Create an Axios instance with the base URL
-  const api = axios.create({
-    baseURL,
-  });
 
   useEffect(() => {
     if (token) {
@@ -98,24 +93,50 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
       setAllUsers((prevAllUsers) => {
         return [...prevAllUsers, userData];
       });
-
       try {
-        const response = await api.post(
-          '/api/auth/register',
-          JSON.stringify(userData),
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        hooray();
-        console.log(response.data);
+        const userDataJson = JSON.stringify(userData);
+
+        const response = await axios.post("/api/auth/register", userDataJson, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (!response || !response.data || !response.data.success) {
+          // Custom error handling for unsuccessful attempts
+          setTf(false);
+          woops(arrayOfRegisterWrongs[3]);
+          handleClearFormSubmit(e);
+        } else {
+          hooray();
+          console.log(response.data);
+        }
       } catch (error) {
+        // Handling network errors, invalid endpoints, unexpected exceptions, etc.
+        console.error("An error occurred while submitting the registration:", error);
         setTf(false);
-        woops(arrayOfRegisterWrongs[3]);
+        woops(arrayOfRegisterWrongs[0]);
         handleClearFormSubmit(e);
       }
+      //     try {
+      //       const userDataJson = JSON.stringify(userData)
+
+      //       const response = await API.post(
+      //         '/api/auth/register',
+      //         userDataJson,
+      //         {
+      //           headers: {
+      //             "Content-Type": "application/json",
+      //           },
+      //         }
+      //       );
+      //       hooray();
+      //       console.log(response.data);
+      //     } catch (error) {
+      //       setTf(false);
+      //       woops(arrayOfRegisterWrongs[3]);
+      //       handleClearFormSubmit(e);
+      // }
     }
   };
 
