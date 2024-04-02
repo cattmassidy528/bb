@@ -102,7 +102,7 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
       try {
         const response = await api.post(
           '/api/auth/register',
-          userData,
+          JSON.stringify(userData),
           {
             headers: {
               "Content-Type": "application/json",
