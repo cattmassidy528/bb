@@ -11,7 +11,7 @@
     "build": "npm --prefix ./client run build",
     "build-server": "npm --prefix ./server run build",
     "start:client": "npm --prefix ./client start",
-    "start:server": "node ./server/server.js",
+    "start:server": "node ./server/server.js --bind 0.0.0.0:$PORT",
     "serve": "node ./server/server.js"
   },
   "keywords": [],

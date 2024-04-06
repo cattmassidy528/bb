@@ -6,7 +6,6 @@
     "npm": "8.19.4",
     "node": "16.20.1"
   },
-  "proxy": "http://localhost:5000",
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@testing-library/jest-dom": "^5.17.0",
@@ -30,7 +29,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "eslintConfig": {
     "extends": [

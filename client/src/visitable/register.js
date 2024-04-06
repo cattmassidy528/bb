@@ -3,13 +3,13 @@ import { AccountContext } from "./context";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import axios from 'axios'
+
 
 const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
   const [tf, setTf] = useState(false);
   const { login, setAllUsers } = useContext(AccountContext);
   const token = localStorage.getItem('token');
-
 
   useEffect(() => {
     if (token) {
@@ -93,50 +93,26 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
       setAllUsers((prevAllUsers) => {
         return [...prevAllUsers, userData];
       });
+
+
       try {
-        const userDataJson = JSON.stringify(userData);
+        const userDataJson = JSON.stringify(userData)
+        console.log(userDataJson)
 
-        const response = await axios.post("/api/auth/register", userDataJson, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-
-        if (!response || !response.data || !response.data.success) {
-          // Custom error handling for unsuccessful attempts
-          setTf(false);
-          woops(arrayOfRegisterWrongs[3]);
-          handleClearFormSubmit(e);
-        } else {
-          hooray();
-          console.log(response.data);
-        }
+        const response = await axios.post('https://bb-mattyc-a82e02218b07.herokuapp.com/api/auth/register', userDataJson,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        hooray();
+        console.log(response.data);
       } catch (error) {
-        // Handling network errors, invalid endpoints, unexpected exceptions, etc.
-        console.error("An error occurred while submitting the registration:", error);
         setTf(false);
-        woops(arrayOfRegisterWrongs[0]);
+        woops(arrayOfRegisterWrongs[3]);
         handleClearFormSubmit(e);
       }
-      //     try {
-      //       const userDataJson = JSON.stringify(userData)
-
-      //       const response = await API.post(
-      //         '/api/auth/register',
-      //         userDataJson,
-      //         {
-      //           headers: {
-      //             "Content-Type": "application/json",
-      //           },
-      //         }
-      //       );
-      //       hooray();
-      //       console.log(response.data);
-      //     } catch (error) {
-      //       setTf(false);
-      //       woops(arrayOfRegisterWrongs[3]);
-      //       handleClearFormSubmit(e);
-      // }
     }
   };
 
@@ -158,15 +134,15 @@ const SignUp = ({ loginOrRegister, setLoginOrRegister }) => {
               <form onSubmit={(e) => handleSignupSubmit(e)}>
                 <div className="form-group ms-5 me-5">
                   <div className="m-3 ">
-                    <input className="form-control border border-2 border-secondary shadow-lg" type="text" name="username" autoComplete="username" value={userData.username} onChange={(e) => handleFormChange(e)} placeholder="username" autoFocus
+                    <input className="form-control border border-2 border-secondary shadow-lg" type="text" name="username" value={userData.username} onChange={(e) => handleFormChange(e)} placeholder="username" autoFocus
                     />
                   </div>
                   <div className="m-3">
-                    <input className="form-control border border-2 border-secondary shadow-lg" type="text" name="email" autoComplete="email" value={userData.email} onChange={(e) => handleFormChange(e)} placeholder="email"
+                    <input className="form-control border border-2 border-secondary shadow-lg" type="text" name="email" value={userData.email} onChange={(e) => handleFormChange(e)} placeholder="email"
                     />
                   </div>
                   <div className="m-3">
-                    <input className="form-control border border-2 border-secondary shadow-lg" type="password" name="password" autoComplete="off" value={userData.password} onChange={(e) => handleFormChange(e)} placeholder="password"
+                    <input className="form-control border border-2 border-secondary shadow-lg" type="password" name="password" value={userData.password} onChange={(e) => handleFormChange(e)} placeholder="password"
                     />
                   </div>
                 </div>

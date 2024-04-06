@@ -9,20 +9,23 @@ const authRoutes = require("./routes/authRoutes");
 const mainRoutes = require("./routes/mainRoutes");
 
 app.use(cors({ origin: "*" })); // Allow all origins (*) temporarily for testing purposes
-const whitelist = ["http://localhost:3000", "https://bb-mattyc-a82e02218b07.herokuapp.com/"];
 
-let corsOptions = {};
-// if (process.env.NODE_ENV === "production") {
-corsOptions = {
-  origin: whitelist,
+const whitelist = ["http://localhost:3000", "https://bb-mattyc-a82e02218b07.herokuapp.com/", "https://bb-mattyc-a82e02218b07.herokuapp.com/api/auth/register", "http://bb-mattyc-a82e02218b07.herokuapp.com/", "http://bb-mattyc-a82e02218b07.herokuapp.com/api/auth/register"];
+
+const corsOptions = {
+  origin: [...new Set([...whitelist, '*'])],
+  credentials: true,
+  methods: ['GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: [
+    'Access-Control-Allow-Headers',
+    'Origin', 'Accept', 'X-Requested-With', 'Content-Type',
+    'Access-Control-Request-Method', 'Access-Control-Request-Headers'
+  ],
+  cacheControl: 'no-cache'
 };
-// } else {
-// corsOptions = {
-// origin: "*",
-// };
-// }
 
 app.use(cors(corsOptions));
+
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
@@ -41,7 +44,7 @@ app.use("/api/auth/profile", mainRoutes);
 app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, + '/../client/build/index.html'));
+  res.sendFile(path.join(__dirname, + '../client/build/index.html'));
 });
 
 
